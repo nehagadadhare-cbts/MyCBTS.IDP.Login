@@ -1,0 +1,214 @@
+/*! BEGIN typography */
+html {
+  font-size: 62.5%; // makes the math easier
+}
+
+body {
+  color: $text-color;
+  // font-size: 1.4rem; // 14px
+  font-size: 1.7rem;
+  font-family: $cb-text-font-stack;
+  line-height: 1.4;
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 3.6rem; // 36px
+  line-height: 1;
+
+}
+
+h2 {
+  font-family: $cb-text-font-stack;
+  font-size: 2.8rem; // 30px
+  line-height: 1.1;
+  font-weight: bold;
+
+  @include media-breakpoint-up(sm){
+    font-size: 3rem; // 30px
+  }
+}
+h3 {
+  font-size: 2.4rem; // 24px
+  line-height: 1.2;
+}
+
+.inner-form-h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 2.1rem; // 21px
+  line-height: 1.3;
+}
+.cb-h4 {
+  font-weight: bold;
+}
+.inner-form-h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.cb-card-section-header{
+  font-size: 1rem;
+  font-weight: bold;
+  @include media-breakpoint-up(sm){
+    font-size: 1.0rem;
+  }
+}
+.cb-card-col{
+  p {
+    font-size: 1.2rem;
+  }
+}
+.cb-card-col-1,
+.cb-card-col-4{
+  p {
+    font-weight: bold;
+  }
+}
+.cb-card-col-2{
+  p {
+    font-size: 1.1rem;
+
+    @include media-breakpoint-up(sm){
+      font-size: 1.2rem;
+    }
+  }
+}
+.cb-card-col-3{
+  p {
+    font-weight: bold;
+    color: $brand-color-secondary;
+  }
+}
+h5 {
+  font-size: 1.8rem; // 18px
+}
+
+h6 {
+  font-size: 1.4rem; // 14px
+}
+nav {
+  font-family: $cb-text-font-stack;
+  font-weight: 200;
+  font-size: 2.2rem;
+}
+.cb-nav-item-bold{
+  font-weight: bold;
+}
+.cb-desktop-nav {
+  font-size: 1.6rem;
+}
+.dropdown-toggle::after{
+  font-size: 4.5rem;
+  vertical-align: 0;
+}
+.dropdown-menu {
+  font-size: 1.4rem;
+  font-family: $cb-text-font-stack;
+
+  & .dropdown-item {
+    font-weight: bold !important;
+    color: rgba($brand-color, 1);
+  }
+  & .dropdown-divider {
+    border-top: 1px solid rgba($brand-color, 1);
+  }
+}
+//override bootstrap font-sizing for input
+input {
+  font-size: 1.6rem !important;
+}
+.cb-link:link,
+.cb-link:visited{
+  color: $brand-color-secondary;
+  text-decoration: underline;
+}
+.cb-link:hover,
+.cb-link:focus,
+.cb-link:active{
+  text-decoration: none;
+}
+.cb-btn{
+  font-family: $cb-text-font-stack;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.cb-btn-text-primary{
+  font-size: 20px;
+}
+.cb-btn-card-text {
+  font-size: 1.6rem;
+}
+.cb-btn-link{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.form-header,
+.form-footer{
+  font-family: $cb-text-font-stack;
+  color: $white;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.custom-control label,
+.form-check label {
+  font-size: 1.2rem;
+}
+.cb-title {
+  font-family: $cb-text-font-stack;
+  color: $brand-color-secondary;
+  font-weight: bold;
+}
+.cb-title-dark{
+  @extend .cb-title;
+  color: $brand-color;
+}
+//profile
+.cb-cards-top-header{
+  font-size: 2.6rem;
+}
+.cb-header-description{
+  font-weight: 200;
+  font-size: 1rem;
+}
+.cb-card-section-header_sp{
+  font-size: 2.6rem;
+}
+.cb-card-p{
+  font-size: 1.5rem;
+}
+.cb-hl-list{
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 2.5;
+}
+.profile-page{
+
+  button{
+    font-size: 1.7rem;
+  }
+}
+.small-text{
+  font-size: 1.2rem;
+}
+.small-text-link{
+  font-size: 1.45rem;
+}
+.cb-btn-card{
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.cb-accordion{
+
+  .row{
+
+    i{
+      font-size: 2.2rem;
+    }
+  }
+}
+
+/*! END typography */

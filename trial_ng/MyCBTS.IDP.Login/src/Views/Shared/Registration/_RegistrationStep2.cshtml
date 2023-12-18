@@ -1,0 +1,106 @@
+﻿@model MyCBTS.IDP.Login.Models.RegisterViewModel
+@inject MyCBTS.IDP.Login.Utility.ICommonUtility commonUtility
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var brandName = commonUtility.GetBrandName();
+    ViewData["Title"] = "My " + brandName + " Access - Confirm Info";
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/css/app.css">
+</head>
+<body class="cb-confirm-page">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="spacer py-2 my-3"></div>
+                @{await Html.RenderPartialAsync("_BrandLogo");}
+            </div>
+            <div class="col-12">
+                <div class="cb-form">
+                    <div class="spacer py-2 my-3"></div>
+                    @using (Html.BeginForm("RegistrationStep2", "Registration", FormMethod.Post, new { @class = "form form_standard mt-5 cb-px-md py-5 mx-auto" }))
+                    {
+                        @Html.HiddenFor(user => user.FirstName)
+                        @Html.HiddenFor(user => user.LastName)
+                        @Html.HiddenFor(user => user.AccountNumber)
+                        @Html.HiddenFor(user => user.EmailAddress)
+                        @Html.HiddenFor(user => user.AccountNickName)
+                        @Html.HiddenFor(user => user.AccountStatus)
+                        @Html.HiddenFor(user => user.BillingSystem)
+                        @Html.HiddenFor(user => user.BrandName)
+                        @Html.HiddenFor(user => user.Password)
+                        @Html.HiddenFor(user => user.ReEnterPassword)
+                        @Html.HiddenFor(user => user.RegisterStep)
+                        @Html.HiddenFor(user => user.Title)
+                        @Html.HiddenFor(user => user.PhoneNumber)
+                        @Html.HiddenFor(user => user.strPhoneNumber)
+
+                        @if (Model.CustomErrors?.Errors?.Count > 0)
+                        {
+                            <div class="form-group col-12 col-lg-12 px-3 ml-2">
+                                @{await Html.RenderPartialAsync("_CustomErrors", Model.CustomErrors);}
+                            </div>
+                        }
+                        @if (Model.BillingSystem == EnumList.BillingSystem.CBAD.ToString() || Model.BillingSystem == EnumList.BillingSystem.CRIS.ToString())
+                        {
+                            <h4 class="px-4 font-weight-bold">Enter total amount due details</h4>
+                            <div class="divider pb-4 text-center"></div>
+                            <div class="form-group col-12 col-lg-6 py-3">
+                                <label class="cb-title" for="totalAmountDue">Total Amount Due:</label>
+                                @Html.TextBoxFor(m => m.TotalAmountDue, "{0:0.00}", new { @class = "form-control", id = "totalAmountDue", placeholder = "Total Amount Due", @onchange = "validateFloatKeyPress(this);" })
+                                <span asp-validation-for="TotalAmountDue" class="text-danger small"></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <h4 class="px-4 font-weight-bold">Enter invoice and total amount due details</h4>
+                            <div class="divider pb-4 text-center"></div>
+                            <div class="form-group col-12 col-lg-6 py-3">
+                                <label class="cb-title" for="invoiceNumber">Invoice Number:</label>
+                                @Html.TextBoxFor(m => m.InvoiceNumber, new { @maxlength = "20", @class = "form-control", id = "invoiceNumber", placeholder = "Invoice Number" })
+                                <span asp-validation-for="InvoiceNumber" class="text-danger small"></span>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label class="cb-title" for="totalAmountDue">Total Amount Due:</label>
+                                @Html.TextBoxFor(m => m.TotalAmountDue, "{0:0.00}", new { @class = "form-control", id = "totalAmountDue", placeholder = "Total Amount Due", @onchange = "validateFloatKeyPress(this);" })
+                                <span asp-validation-for="TotalAmountDue" class="text-danger small"></span>
+                            </div>
+                        }
+                        <div class="col-12 text-right">
+                            <input type="submit" name="back" role="button" class="btn btn-link btn-lg text-left col-12 col-lg-2 link-dark " value="Back" aria-pressed="false">
+                            <button type="submit" class="btn btn-secondary btn-lg cb-btn  col-12 col-lg-2 text-white cb-btn-text-primary">Continue</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/245c020873.js" crossorigin="anonymous"></script>
+    <script src="~/dist/js/script.js" async defer></script>
+    <script>
+    function validateFloatKeyPress(el) {
+    var v = parseFloat(el.value);
+    el.value = (isNaN(v)) ? parseFloat(0).toFixed(2) : v.toFixed(2);
+    }
+    </script>
+</body>
+</html>

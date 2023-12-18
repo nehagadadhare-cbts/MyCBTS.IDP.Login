@@ -1,0 +1,27 @@
+.cb-accordion{
+
+    .card{
+
+        .btn{
+            border-bottom: 2px solid $brand-color;
+        }
+
+        .cb-collapsed-body{
+
+            .cb-underline{
+                border-bottom: 1px solid rgba($brand-color, 0.3);
+            }
+        }
+        .cb-accordion-button
+        {
+            .cb-accordion-icon
+            {
+                transition: transform 0.35s ease;
+            }
+            &[aria-expanded="true"] .cb-accordion-icon
+            {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

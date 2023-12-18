@@ -1,0 +1,43 @@
+@charset 'UTF-8';
+
+
+// 1. Configuration and helpers
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+// 2. Vendors
+// @import 'vendors/normalize';
+//boostrap
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+// 3. Base stuff
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/helpers';
+@import 'base/ie-only.scss';
+
+// 4. Layout-related sections
+@import 'layout/header';
+@import 'layout/footer';
+
+// 5. Components
+@import 'components/button';
+@import 'components/accordion';
+@import 'components/cb-card';
+@import 'components/cb-slider';
+@import 'components/form';
+
+// 6. Page-specific styles
+@import 'pages/home';
+@import 'pages/confirm';
+@import 'pages/general-page';
+@import 'pages/manage-accounts';
+@import 'pages/notifications-page';
+@import 'pages/profile-details';
+@import 'pages/profile';
+
+
+// 7. Themes
+@import 'themes/default';

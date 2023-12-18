@@ -1,0 +1,71 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+// Event wrapper
+// @author Harry Roberts
+// @param {Bool} $self [false] - Whether or not to include current selector
+// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+// Make a context based selector a little more friendly
+// @author Hugo Giraudel
+// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+@mixin cbts-bkgrd($image,$bk-color){
+  background: $image $bk-color bottom no-repeat;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+@mixin cb-module($width: $module-form-width, $min-height: $module-form-height ){
+  width: $width;
+  border-radius: 10px;
+  min-height: $min-height;
+}
+
+@mixin cb-btn($border-radius: $cb-border-radius, $padding-x: $cb-padding-x, $padding-y: $cb-padding-y, $color: $white){
+  border-radius:$border-radius;
+  padding: $padding-y $padding-x;
+  color: $color;
+}
+@mixin cb-mod-footer($max-width: 90%, $max-height: 12.5rem, $width: $module-form-width-sm){
+  background-color: $brand-color-secondary;
+  max-width: $max-width;
+  max-height: $max-height;
+  width: $width;
+  border-bottom-right-radius: $cb-card-border-radius;
+  border-bottom-left-radius: $cb-card-border-radius;
+  padding-bottom: 2rem;
+  padding-top: 1.2rem;
+}
+@mixin cb-mod-header($max-width: 95%, $max-height: 12.5rem, $width: $module-form-width-sm){
+  background-color: $brand-color-secondary;
+  max-width: $max-width;
+  max-height: $max-height;
+  width: $width;
+  border-top-right-radius: $cb-card-border-radius;
+  border-top-left-radius: $cb-card-border-radius;
+  padding-top: 2rem;
+  padding-bottom: 1.2rem;
+}

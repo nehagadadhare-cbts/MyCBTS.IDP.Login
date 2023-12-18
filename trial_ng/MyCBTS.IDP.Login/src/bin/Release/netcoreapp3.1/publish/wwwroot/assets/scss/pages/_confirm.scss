@@ -1,0 +1,31 @@
+.cb-confirm-page{
+    display: flex;
+    flex-direction: column;
+
+    .form{
+        width: 70rem;
+    }
+    .cb-info{
+        p{
+            line-height: 1;
+        }
+        .col-12{
+            padding-bottom: 1.5rem;
+        }
+    }
+    .cb-btn-wrapper{
+        .order-1-sm{
+            order: 1;
+        }
+
+        .order-2-sm{
+            order: 2;
+            text-align: center;
+
+            @include media-breakpoint-up(sm){
+                order: 1;
+                text-align: left;
+            }
+        }
+    }
+}

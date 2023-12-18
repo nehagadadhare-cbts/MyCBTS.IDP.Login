@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+.home-page{
+    .cb-checkbox-wrapper{
+        & button {
+            @include media-breakpoint-down(375px){
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    // .custom-control-label::before{
+    //     width: 1.5rem;
+    //     height: 1.5rem;
+    // }
+    // .custom-control-label::after{
+    //     width: 2rem;
+    //     height: 2rem;
+    //     left: -1.75rem;
+    //     top: 0.05rem;
+    // }
+    label.custom-control-label.cb-checkbox-label {
+        padding-top: 0.25rem;
+        padding-left: 0.5rem !important;
+    }
+    .was-validated .custom-control-input:valid:checked ~ .cb-checkbox-label::before{
+        border-color: $brand-color-secondary;
+        background-color: $brand-color-secondary;
+    }
+    .was-validated .custom-control-input:valid ~ .custom-control-label::before{
+        border-color: $brand-color-secondary;
+    }
+    .was-validated .custom-control-input:valid ~ .cb-checkbox-label{
+        color: $brand-color;
+    }
+}
+.cb-checkbox-wrapper{
+    & button {
+        @include media-breakpoint-down(375px){
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}

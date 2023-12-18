@@ -1,0 +1,96 @@
+.form {
+    background-color: $white;
+    max-width: 90%;
+    width: $module-form-width-sm;
+    // min-height: 300px;
+    border-top-right-radius: $cb-card-border-radius;
+    border-top-left-radius: $cb-card-border-radius;
+
+
+    &_standard {
+        border-bottom-right-radius: $cb-card-border-radius;
+        border-bottom-left-radius: $cb-card-border-radius;
+    }
+    &_standard-sm {
+        min-height: 200px;
+    }
+
+    .form-group{
+        margin-bottom: 3rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="phone"]{
+        background-color: rgba($brand-color,.1);
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-color: transparent;
+        // margin-bottom: 3rem;
+    }
+
+    input[type="checkbox"]{
+        opacity: 1;
+        margin-right: 1rem;
+    }
+    // input[type="checkbox"]:checked:before {
+    //     content: "\2713";
+    //     background-color: $brand-color-secondary;
+    //     border: 1px solid $light-grey;
+    //     padding: 10px;
+    // }
+    input:focus {
+        box-shadow: 0 0 0 0.2rem rgba($dark-grey, .4);
+    }
+    &-check label {
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+    }
+    // .cb-checkbox {
+    //     opacity: 1;
+    // }
+
+//start code from home stylesheet
+
+//checkboxes size
+    .custom-control-label::before{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .custom-control-label::after{
+        width: 2rem;
+        height: 2rem;
+        left: -1.75rem;
+        top: 0.05rem;
+    }
+    // label.custom-control-label.cb-checkbox-label {
+    //     padding-top: 0.15rem;
+    // }
+    // .was-validated .custom-control-input:valid:checked ~ .cb-checkbox-label::before{
+    //     border-color: $brand-color-secondary;
+    //     background-color: $brand-color-secondary;
+    // }
+    // .was-validated .custom-control-input:valid ~ .custom-control-label::before{
+    //     border-color: $brand-color-secondary;
+    // }
+    // .was-validated .custom-control-input:valid ~ .cb-checkbox-label{
+    //     color: $brand-color;
+    // }
+//end code from stylesheet
+
+    &-footer {
+        @include cb-mod-footer;
+        @include media-breakpoint-down(375px){
+            text-align: center;
+        }
+    }
+}
+.cb-form {
+    .form-standard h2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
+    }
+}
+

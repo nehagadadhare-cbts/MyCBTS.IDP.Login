@@ -1,0 +1,49 @@
+﻿@model MyCBTS.IDP.Login.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var RegistrationStep1 = MyCBTS.IDP.Login.Models.RegisterViewModel.RegisterFlow.RegistrationStep1;
+    var RegistrationStep2 = MyCBTS.IDP.Login.Models.RegisterViewModel.RegisterFlow.RegistrationStep2;
+    var RegistrationContinue = MyCBTS.IDP.Login.Models.RegisterViewModel.RegisterFlow.RegistrationContinue;
+}
+@if (Model.RegisterStep == RegistrationStep1)
+{
+    @await Html.PartialAsync("Registration/_RegistrationStep1", Model);
+}
+else if (Model.RegisterStep == RegistrationStep2)
+{
+    @await Html.PartialAsync("Registration/_RegistrationStep2", Model);
+}
+else if (Model.RegisterStep == RegistrationContinue)
+{
+    @await Html.PartialAsync("Registration/_RegistrationContinue", Model);
+}
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#phone').keyup(function () {
+            var val = this.value.replace(/\D/g, '');
+            var maxlength = 12;
+            var newVal = '';
+            for (i = 0; i < 2; i++) {
+                if (val.length > 3) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+            }
+            newVal += val;
+            if (newVal.length > maxlength) {
+                this.value = newVal.substr(0, maxlength);
+            }
+            else {
+                this.value = newVal;
+            }
+        });
+    });
+
+</script>
+}

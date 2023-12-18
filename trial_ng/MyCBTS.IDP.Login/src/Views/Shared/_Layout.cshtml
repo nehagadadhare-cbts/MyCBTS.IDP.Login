@@ -1,0 +1,101 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@inject MyCBTS.IDP.Login.Utility.ICommonUtility commonUtility
+@{
+    var brandName = commonUtility.GetBrandName();
+    ViewBag.Brand = brandName;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyCBTS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyCBTS.IDP.Login</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>*@
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - MyCBTS.IDP.Login - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <footer class="cb-footer fixed-bottom">
+        <div class="container">
+            <!--start desktop footer-->
+            @if (brandName == "CBTS")
+            {
+                <ul class="nav d-none d-xl-flex">
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["PrivacyPolicy"]" target="_blank" class="nav-link link-white-underline">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["Termsofuse"]" target="_blank" class="nav-link link-white-underline">Terms of Use</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["SiteMap"]" target="_blank" class="nav-link link-white-underline">Site Map</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["CopyrightCBTS2020"]" target="_blank" class="nav-link link-white-underline">Copyright 2020</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav d-none d-xl-flex">
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["PrivacyPolicy"]" target="_blank" class="nav-link link-white-underline">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["Termsofuse"]" target="_blank" class="nav-link link-white-underline">Terms of Use</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["SiteMap"]" target="_blank" class="nav-link link-white-underline">Site Map</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["CopyrightCBTS2020"]" target="_blank" class="nav-link link-white-underline">Copyright 2020</a></li>
+                </ul>
+            }
+            <!--end desktop footer-->
+            <!--start mobile footer-->
+            @if (brandName == "CBTS")
+            {
+                <ul class="nav nav-fill d-flex flex-nowrap d-xl-none">
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["PrivacyPolicy"]" target="_blank" class="nav-link link-white-underline">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["Termsofuse"]" target="_blank" class="nav-link link-white-underline">Terms of Use</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["SiteMap"]" target="_blank" class="nav-link link-white-underline">Site Map</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("CBTSUriLinks")["CopyrightCBTS2020"]" target="_blank" class="nav-link link-white-underline">Copyright 2020</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav nav-fill d-flex flex-nowrap d-xl-none">
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["PrivacyPolicy"]" target="_blank" class="nav-link link-white-underline">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["Termsofuse"]" target="_blank" class="nav-link link-white-underline">Terms of Use</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["SiteMap"]" target="_blank" class="nav-link link-white-underline">Site Map</a></li>
+                    <li class="nav-item"><a href="@Configuration.GetSection("ONXUriLinks")["CopyrightCBTS2020"]" target="_blank" class="nav-link link-white-underline">Copyright 2020</a></li>
+                </ul>
+            }
+            <!--start mobile footer-->
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

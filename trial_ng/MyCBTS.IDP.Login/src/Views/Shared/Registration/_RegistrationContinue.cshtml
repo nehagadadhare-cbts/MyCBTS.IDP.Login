@@ -1,0 +1,133 @@
+﻿@model MyCBTS.IDP.Login.Models.RegisterViewModel
+@inject MyCBTS.IDP.Login.Utility.ICommonUtility commonUtility
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var brandName = commonUtility.GetBrandName();
+    ViewData["Title"] = "My " + brandName + " Access - Confirm Info";
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/css/app.css">
+</head>
+<body class="cb-confirm-page">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="spacer py-2 my-3"></div>
+                @{await Html.RenderPartialAsync("_BrandLogo");}
+            </div>
+
+            <div class="col-12">
+                <div class="cb-form">
+                    <div class="spacer py-2 my-3"></div>
+                    @using (Html.BeginForm("RegistrationContinue", "Registration", FormMethod.Post, new { @class = "form form_standard mt-5 cb-px-md py-5 mx-auto" }))
+                    {
+                        @Html.HiddenFor(user => user.FirstName)
+                        @Html.HiddenFor(user => user.LastName)
+                        @Html.HiddenFor(user => user.AccountNumber)
+                        @Html.HiddenFor(user => user.EmailAddress)
+                        @Html.HiddenFor(user => user.AccountNickName)
+                        @Html.HiddenFor(user => user.AccountStatus)
+                        @Html.HiddenFor(user => user.BillingSystem)
+                        @Html.HiddenFor(user => user.BrandName)
+                        @Html.HiddenFor(user => user.Password)
+                        @Html.HiddenFor(user => user.ReEnterPassword)
+                        @Html.HiddenFor(user => user.RegisterStep)
+                        @Html.HiddenFor(user => user.Title)
+                        @Html.HiddenFor(user => user.PhoneNumber)
+                        @Html.HiddenFor(user => user.strPhoneNumber)
+                        @Html.HiddenFor(user => user.TotalAmountDue)
+                        @Html.HiddenFor(user => user.InvoiceNumber)
+
+                        <h2 class="py-3 text-center">Confirm your information</h2>
+                        <div class="divider pb-4 text-center"></div>
+                        <div class="row pt-4 pb-3">
+                            <div class="cb-info row col-10 offset-2 col-sm-5 offset-sm-1">
+                                <div class="col-12">
+                                    <p><span class="cb-title">First Name:</span></p>
+                                    <p>@Model.FirstName</p>
+                                </div>
+                                <div class="col-12">
+                                    <p><span class="cb-title">Last Name:</span></p>
+                                    <p>@Model.LastName</p>
+                                </div>
+                                <div class="col-12">
+                                    <p><span class="cb-title">Email Address:</span></p>
+                                    <p>@Model.EmailAddress</p>
+                                </div>
+                                <!-- <div class="col-12">
+					                    <p><span class="cb-title">Password:</span></p>
+					                    <p>*******************</p>
+					                </div> -->
+                                <div class="col-12">
+                                    <p><span class="cb-title">Phone Number:</span></p>
+                                    <p>@Model.strPhoneNumber</p>
+                                </div>
+                            </div>
+                            <div class="cb-info row col-10 offset-2 col-sm-5 offset-sm-1">
+                                <div class="col-12">
+                                    <p><span class="cb-title">Title:</span></p>
+                                    <p>@Model.Title</p>
+                                </div>
+                                <div class="col-12">
+                                    <p><span class="cb-title">Account Number: </span></p>
+                                    <p>@Model.AccountNumber</p>
+                                </div>
+                                @if (!(string.IsNullOrEmpty(@Model.InvoiceNumber)))
+                                {
+                                    <div class="col-12">
+                                        <p><span class="cb-title">Invoice Number: </span></p>
+                                        <p>@Model.InvoiceNumber</p>
+                                    </div>
+                                }
+                                @if (Model.BillingSystem == EnumList.BillingSystem.CBAD.ToString() || Model.BillingSystem == EnumList.BillingSystem.CRIS.ToString())
+                                {
+                                    <div class="col-12">
+                                        <p><span class="cb-title">Total Amount Due: </span></p>
+                                        <p>@Model.TotalAmountDue.ToString("N2")</p>
+                                    </div>
+                                }
+                                <div class="col-12" style="display:none">
+                                    <p><span class="cb-title">Billing Cycle Date: </span></p>
+                                    <p>@Model.LastBill</p>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.CustomErrors?.Errors?.Count > 0)
+                        {
+                            <div class="form-group">
+                                @{await Html.RenderPartialAsync("_CustomErrors", Model.CustomErrors);}
+                            </div>
+                        }
+                        <div class="row pt-3 cb-px-md cb-btn-wrapper">
+                            <input type="submit" name="goback" role="button" class="btn btn-link btn-lg col-12 col-sm-5 offset-sm-1 link-dark order-2-sm" value="Go back" aria-pressed="false" />
+                            <button type="submit" role="button" class="btn btn-secondary col-12 col-sm-4 offset-sm-1 btn-lg cb-btn text-white cb-btn-text-primary order-1-sm" aria-pressed="false">Confirm</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/245c020873.js" crossorigin="anonymous"></script>
+    <script src="" async defer></script>
+</body>
+</html>

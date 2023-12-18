@@ -1,0 +1,33 @@
+
+.cb-card {
+    background-color: transparent;
+    width: 100%;
+
+    &-header {
+        @include cb-mod-header(100%, 12.5rem, 100%);
+    }
+    &-body {
+        background-color: $white;
+        max-width: 100%;
+        width: 100%;
+        min-height: 18rem;
+        border-bottom-right-radius: $cb-card-border-radius;
+        border-bottom-left-radius: $cb-card-border-radius;
+    }
+}
+.card{
+    border: none; //removing white border around bootstrap cards
+
+    &-header:first-child{
+        border-radius: $cb-card-border-radius $cb-card-border-radius 0 0;
+    }
+
+    &-header{
+        @include media-breakpoint-up(md){
+            padding-left: 4.5rem;
+          }
+        h2{
+            padding-top: 1rem;
+        }
+    }
+}

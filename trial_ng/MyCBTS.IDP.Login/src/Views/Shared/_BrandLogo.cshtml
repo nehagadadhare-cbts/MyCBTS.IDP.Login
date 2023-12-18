@@ -1,0 +1,21 @@
+﻿@using MyCBTS.IDP.Login.Mapping
+@using MyCBTS.IDP.Login.Configuration
+@inject Microsoft.Extensions.Options.IOptions<AppConfiguration> appConfiguration
+@{
+    var _appConfiguration = appConfiguration.Value;
+    var sessionBrand = @httpContextAccessor.HttpContext.Session.GetString(APIConstants.SessionClient);
+    var brandName = string.IsNullOrEmpty(sessionBrand) ? _appConfiguration.DefaultBrand.ToString() : sessionBrand;
+}
+
+@if (brandName == EnumList.BrandName.ONX.ToString())
+{
+    <div class="cb-logo text-center mt-5">
+        <img class="cb-logo-no-nav" src="~/assets/img/onx-reverse-logo.png">
+    </div>
+}
+else
+{
+    <div class="cb-logo text-center mt-5">
+        <img class="cb-logo-no-nav" src="~/assets/img/cbts-logo.png">
+    </div>
+}

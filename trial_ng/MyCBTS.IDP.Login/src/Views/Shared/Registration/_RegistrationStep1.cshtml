@@ -1,0 +1,218 @@
+﻿@model MyCBTS.IDP.Login.Models.RegisterViewModel
+@inject MyCBTS.IDP.Login.Utility.ICommonUtility commonUtility
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var brandName = commonUtility.GetBrandName();
+    ViewData["Title"] = "My " + brandName + " Access";
+    ViewBag.Brand = brandName;
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/assets/css/app.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="spacer py-2 my-3"></div>
+                @{await Html.RenderPartialAsync("_BrandLogo");}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="cb-form">
+                    <div class="spacer py-2 my-3"></div>
+                    @using (Html.BeginForm("RegistrationStep1", "Registration", FormMethod.Post, new { @class = "form needs-validation form_standard mt-5 cb-px-md py-5 mx-auto cb-form_long" }))
+                    {
+                        <h2 class="text-center pt-5 pb-3">My @ViewBag.Brand Access</h2>
+                        <p class="pb-3">My @ViewBag.Brand gives you the benefits of managing your account online. View your bills, add new services, view your usage and much more. My @ViewBag.Brand is required to use @ViewBag.Brand eBill Paperless Billing Service.</p>
+                        @if (Model.CustomErrors?.Errors?.Count > 0)
+                        {
+                            <div class="form-group">
+                                @{await Html.RenderPartialAsync("_CustomErrors", Model.CustomErrors);}
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label class="cb-title" for="firstname">First Name:</label>
+                            @Html.TextBoxFor(m => m.FirstName, new { @maxlength = "20", @class = "form-control", id = "firstname", placeholder = "First Name", required = "required" })
+                            <span asp-validation-for="FirstName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="lastname">Last Name:</label>
+                            @Html.TextBoxFor(m => m.LastName, new { @maxlength = "20", @class = "form-control", id = "lastname", placeholder = "Last Name", required = "required" })
+                            <span asp-validation-for="LastName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="title">Title:</label>
+                            @Html.TextBoxFor(m => m.Title, new { @maxlength = "20", @class = "form-control", id = "title", placeholder = "Enter Title", required = "required" })
+                            <span asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="email">Email:</label>
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @maxlength = "50", @class = "form-control", id = "email", placeholder = "Email Address", type = "email", required = "required" })
+                            <span asp-validation-for="EmailAddress"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="password">Password:</label>
+                            @Html.PasswordFor(m => m.Password, new { @maxlength = "20", @class = "form-control", id = "password", placeholder = "Password", required = "required" })
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="reenterpassword">Re-enter Password:</label>
+                            @Html.PasswordFor(m => m.ReEnterPassword, new { @maxlength = "20", @class = "form-control", id = "reenterpassword", placeholder = "Password", required = "required" })
+                            <span asp-validation-for="ReEnterPassword"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="phone">Phone Number:</label>
+                            @Html.TextBoxFor(m => m.strPhoneNumber, new { @maxlength = "12", @class = "form-control", id = "phone", placeholder = "Phone Number", required = "required" })
+                            <span asp-validation-for="strPhoneNumber"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="accountNumber">Account Number:</label>
+                            @Html.TextBoxFor(m => m.AccountNumber, new { @maxlength = "13", @class = "form-control", id = "accountNumber", placeholder = "Account Number", required = "required" })
+                            <span asp-validation-for="AccountNumber"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="cb-title" for="accountNickname">Account Nickname:</label>
+                            @Html.TextBoxFor(m => m.AccountNickName, new { @maxlength = "20", @class = "form-control", id = "accountNickname", placeholder = "Account Nickname", required = "required" })
+                            <span asp-validation-for="AccountNickName"></span>
+                        </div>
+                        //cbe16161
+                        <div class="form-group">
+                            <p class="mb-s">Prove you're not a robot:</p>
+                            <div class="white-well" style="padding: 10px 10px !important;">
+                                <span style="display:inline-block; color:red">
+                                    @ViewBag.ReCaptchaMessage
+                                </span>
+                                <div class="g-recaptcha" data-sitekey="6Lf5FZsjAAAAAChgSccofEv84a8rViZIJQItW_Q6" style="position: relative;"></div>
+                            </div>
+
+                            <script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="cb-flex">
+                                <div class="cb-link center-on-sm">
+                                    <a class="link-dark" href="@Url.Action("Login", "Account")">Cancel</a>
+                                </div>
+                                <button type="submit" class="btn btn-secondary cb-btn cb-btn-text-primary">Next</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="cb-form">
+                    <div class="spacer py-2 my-3"></div>
+                    <form class="form form_standard mt-5 py-5 mx-auto cb-px-md cb-form_long">
+                        <div class="section-1 py-5">
+                            <div class="cb-2-col-grid">
+                                <div class="cb-grid-img">
+                                    <img src="~/assets/img/form-bill-icon.png" alt="">
+                                </div>
+                                <div class="cb-grid-description">
+                                    <h3 class="inner-form-h3">My @ViewBag.Brand is more than just bills.</h3>
+                                    <p class="pb-2">
+                                        My @ViewBag.Brand from @ViewBag.Brand allows you to take control of your account online. View your bill, make changes, setup email notifications, even order pay per view movies. What's more, you have 24/7 access to your account from any computer, tablet or smartphone!
+                                    </p>
+                                    <p>My @ViewBag.Brand has also been built using industry standard SSL encryption so your personal information is always secure.</p>
+                                </div>
+                                <div class="cb-grid-img pt-5">
+                                    <img src="~/assets/img/form-mobile-icon.png" alt="">
+                                </div>
+                                <div class="cb-grid-description pt-5">
+                                    <h3 class="inner-form-h3">Take it with you</h3>
+                                    <p class="pb-2">
+                                        My @ViewBag.Brand is smartphone and tablet friendly so you can view and pay your bills on the go.
+                                    </p>
+                                    <p>My @ViewBag.Brand for mobile currently supports Android, IOS and BlackBerry Smartphones as well as the latest tablets.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="section-2 mx-auto text-center py-5">
+                            <h3 class="inner-form-h3">Featured Services from @ViewBag.Brand</h3>
+                            <div id="carouselControls" class="carousel slide py-3" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!-- <a href="#carouselControls" class="prev pt-3"><img src="~/assets/img/previous-icon.png" alt="previous button" role="button" data-slide="prev"></a> -->
+
+                                    <div class="carousel-item active">
+                                        <div class="cb-carousel-item-wrapper mx-auto">
+                                            <img class="d-block w-100 mx-auto" src="~/assets/img/slide-placeholder.png" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="cb-carousel-item-wrapper mx-auto">
+                                            <img class="d-block w-100 mx-auto" src="~/assets/img/slide-placeholder.png" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <!-- <a href="#carouselControls" class="next pt-3"><img src="~/assets/img/next-icon.png" alt="next button" role="button" data-slide="prev"></a> -->
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                                    <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+                                    <img src="~/assets/img/previous-icon.png" alt="previous button" role="button" data-slide="prev">
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                                    <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+                                    <img src="~/assets/img/next-icon.png" alt="next button" role="button" data-slide="next">
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <h3 class="inner-form-h3">Unified Communications as a Service</h3>
+                            <div class="short-divider"></div>
+                        </div>
+
+                        <div class="section-3 py-5">
+                            <h3 class="inner-form-h3">Securely enabling the agile business</h3>
+                            <p>
+                                In today’s digital world, everything can change in an instant. Success depends on your business’ ability to adapt in the instant and evolve your business on the fly. With the right collaboration tools, you can be one of those agile companies that achieves better performance and results through the teamwork of employees, customers, and partners.
+                            </p>
+                            <p>But today’s agile business requires more than a “one-size-fits-all” approach. An effective collaboration platform will make communication simple and intuitive for everyone, everywhere, all the time.</p>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="section-4 py-5">
+                            <h4 class="inner-form-h4 pb-5">Have Questions?</h4>
+                            <div class="cb-flex-row">
+                                <a href="" type="button" class="btn btn-primary cb-btn text-left">Contact Us</a>
+                                @if (brandName == EnumList.BrandName.ONX.ToString())
+                                {
+                                    <div class="cb-inner-img-wrapper text-right">
+                                        <img src="~/assets/img/onx_canada_teal-RGB.png" alt="">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="cb-inner-img-wrapper text-right">
+                                        <img src="~/assets/img/cbts-logo-small-dark.png" alt="">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/245c020873.js" crossorigin="anonymous"></script>
+    <script src="~/dist/js/script.js" async defer></script>
+</body>
+</html>

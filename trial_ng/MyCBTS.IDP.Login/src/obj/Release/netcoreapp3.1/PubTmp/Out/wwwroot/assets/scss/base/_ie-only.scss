@@ -1,0 +1,62 @@
+.browsehappy{
+    display: none;
+}
+
+@media all and (-ms-high-contrast:none){
+    //ie10
+    .browsehappy{
+        display: inline-block;
+        background: #fff;
+        color: #000000;
+        text-align: center;
+        border: 1px solid red;
+
+        strong{
+            font-weight: bold;
+        }
+
+        a.link-dark {
+            text-decoration: underline;
+        }
+    }
+    .form{
+
+        .form-control{
+            width: 100%;
+            height: 100%;
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+
+        //on notifications.html page
+        label{
+            .cb-checkbox-for-toggle{
+                color: $brand-color;
+                background-color: rgba($brand-color-secondary, 0.4);
+            }
+
+            .cb-checkbox-for-toggle:focus{
+                box-shadow: 0px 0px 0px 0.2rem rgba($brand-color-secondary, 0.4);
+            }
+        }
+    }
+    
+
+    
+    .profile-nav {
+        width: 22rem;
+    }
+    //notifications page
+    .cb-slider{
+        display: none;
+    }
+    .cb-switch .cb-checkbox-for-toggle{
+        opacity: 1 !important;
+        width: auto !important;
+        height: auto !important;
+    }
+    //on off text
+    .toggle-text-wrapper{
+        display: none;
+    }
+}

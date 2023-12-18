@@ -1,0 +1,16 @@
+﻿@model CustomResponse
+@{
+    var errorList = Model.Errors;
+}
+@if (errorList.Count > 0)
+{
+    foreach (var errorMessage in errorList)
+    {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @errorMessage
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    }
+}

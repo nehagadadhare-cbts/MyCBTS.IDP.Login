@@ -1,0 +1,223 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: $max-width; /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 20px; /* 3 */
+  padding-right: 20px; /* 3 */
+  width: 100%; /* 1 */
+}
+.cb-container-md {
+  @extend .container;
+  max-width: 76.8rem;
+}
+.cb-container-sm {
+  @extend .container;
+  max-width: 215px;
+}
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+//link alt link colors and behaviors
+a.link-dark {
+  color: $brand-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $brand-color-secondary;
+    text-decoration: underline;
+  }
+}
+a.link-white-underline {
+  color: $white;
+  text-decoration: none;
+
+  @include on-event {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+.cb-link-second-to-primary{
+  color: $brand-color-secondary;
+  text-decoration: underline;
+  font-weight: bold;
+
+  @include on-event {
+    color: $brand-color;
+    text-decoration: none;
+  }
+}
+.cb-flex{
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 425px){
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+.cb-flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cb-2-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.cb-text-center-sm{
+
+  @include media-breakpoint-down(xs){
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.cb-text-mt-sm{
+
+  @include media-breakpoint-down(xs){
+    margin-top: 2rem;
+  }
+}
+.cb-pl-sm{
+
+  @include media-breakpoint-down(xs){
+    padding-left: 3rem !important;
+  }
+}
+.cb-pr-sm{
+
+  @include media-breakpoint-down(xs){
+    padding-right: 3rem !important;
+  }
+}
+.cb-mb-lg{
+
+  margin-bottom: 3.7rem !important;
+
+  @include media-breakpoint-up(lg){
+    margin-bottom: 5rem !important;
+  }
+}
+.cb-mb-5{
+  margin-bottom: 5rem !important;
+}
+.cb-mt-lg{
+
+  @include media-breakpoint-up(lg){
+    margin-top: 5rem !important;
+  }
+}
+.cb-align-middle{
+  // padding-top: 1.2rem;
+  padding-top: 0.2rem;
+}
+//container for consistent padding
+.cb-px-md {
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+  @include media-breakpoint-up(sm) {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+   }
+}
+.cb-px-md-22{
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+}
+.center-on-sm{
+  @include media-breakpoint-down(375px){
+    text-align: center;
+    padding-top: 0.2rem;
+    padding-bottom: 1rem;
+  }
+}
+.divider{
+  border-top: 2px solid $brand-color-secondary;
+}
+.short-divider{
+  width: 3rem;
+  border-top: 2px solid $brand-color-secondary;
+}
+.cb-form_long{
+  min-height: 145rem !important;
+}
+.cb-hide-on-mobile{
+
+  @include media-breakpoint-down(sm){
+    display: none;
+  }
+}
+.cb-hide-on-desktop{
+    
+  @include media-breakpoint-up(md){
+    display: none;
+  }
+}
+.inner-card-container_profile{
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+//mycbtsaccess.html page
+.cb-inner-img-wrapper{
+  width: 9rem;
+
+  img {
+    width: 100%;
+  }
+}
+.cb-carousel-item-wrapper{
+  max-width: 15rem;
+}
+//cards
+.card-header{
+  text-align: center;
+
+  @include media-breakpoint-up(md){
+    text-align: left;
+  }
+}
+

@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.cb-footer {
+    background-color: $brand-color;
+    color: $white;
+    // min-height: 4.5rem;
+    // position: static;
+
+    &-mobile {
+        flex-wrap: nowrap;
+
+        &-item {
+            border-top: 2px solid rgba($brand-color-secondary,.4);
+            padding: 1rem;
+
+            &:not(:last-child){
+                border-right: 2px solid rgba($brand-color-secondary,.4);
+            }
+
+            & img {
+                max-width: 50%;
+            }
+        }
+        // @include media-breakpoint-up(lg){
+        //     display: none !important;
+        // }
+        @media (min-width: 1060px){
+            display: none !important;
+        }
+    }
+
+    &-desktop{
+        display: none !important;
+    
+        // @include media-breakpoint-up(lg){
+        //     display: flex !important;
+        //     padding-top: .5rem;
+        //     padding-bottom: .5rem;
+        // }
+        @media (min-width: 1060px){
+            display: flex !important;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+    }
+}
+

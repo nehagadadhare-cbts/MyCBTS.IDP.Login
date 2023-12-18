@@ -1,0 +1,19 @@
+.general-page{
+    .card{
+        .card-body{
+            padding-top: 1.6rem;
+        }
+        .row{
+            line-height: 0.75;
+
+            .col-12{
+                padding-bottom: 1.5rem;
+            }
+            .cb-br-secondary{
+                @include media-breakpoint-up(md){
+                  border-right: 1px solid $brand-color-secondary;
+                }
+            }
+        }
+    }
+}

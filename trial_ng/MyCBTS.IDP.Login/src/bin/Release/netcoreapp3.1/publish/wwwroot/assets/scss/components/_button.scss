@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.cb-btn{
+    @include cb-btn($padding-x: 2rem, $padding-y: 0.5rem);
+    min-width: 12rem;
+    // max-height: 4rem;
+}
+
+.cb-btn-card{
+    color: $brand-color-secondary;
+    font-weight: bold;
+}

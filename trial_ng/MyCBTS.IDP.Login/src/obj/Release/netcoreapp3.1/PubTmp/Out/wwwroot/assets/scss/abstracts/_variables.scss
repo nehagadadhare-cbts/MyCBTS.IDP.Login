@@ -1,0 +1,81 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// Regular font family
+// @type List
+$cb-text-font-stack: "Gilroy";
+$cb-text-font-stack-secondary: "MyraidPro";
+$text-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+// Code (monospace) font family
+// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+
+// Copy text color
+// @type Color
+$text-color: rgb(3,38,56) !default;
+$text-color-secondary: rgb(255,255,255) !default;
+
+// Main brand color
+// @type Color
+$brand-color: rgb(3,38,56) !default;
+$brand-color-secondary: rgb(34, 211, 197);
+
+// White
+// @type Color
+$white: rgb(255,255,255);
+
+// Light grey
+// @type Color
+$light-grey: rgb(237, 237, 237) !default;
+
+// Medium grey
+// @type Color
+$mid-grey: rgb(153, 153, 153) !default;
+
+// Dark grey
+// @type Color
+$dark-grey: rgb(68, 68, 68) !default;
+
+// Container's maximum width
+// @type Length
+$max-width: 1180px !default;
+
+// Breakpoints map
+// @prop {String} keys - Keys are identifiers mapped to a given length
+// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;
+
+// Relative or absolute URL where all assets are served from
+// @type String
+// @example scss - When using a CDN
+//   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
+
+$cbst-bkgrd: url('../img/dots-bg.png');
+$cb-bk-color: rgba(3,38,56,1);
+
+$module-form-max-width: 44.5rem;
+$module-form-width-sm: 41.5rem;
+$module-form-height: 40.2rem;
+
+//used on buttons and modules/cards
+$cb-border-radius: 2.5rem;
+$cb-card-border-radius: 1.5rem;
+$cb-padding-x: 2rem;
+$cb-padding-y: .75rem;
+
+//bootstrap overrides
+//theme colors
+$theme-colors: (
+  "primary": $brand-color,
+  "secondary": $brand-color-secondary
+);
+$component-active-bg: $brand-color-secondary;
+
+$card-border-radius: $cb-card-border-radius;

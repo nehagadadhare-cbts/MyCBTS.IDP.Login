@@ -1,0 +1,22 @@
+.notifications-page{
+    
+    .card-body{
+        
+        h4{
+            padding-top: 1rem;
+            font-weight: bold;
+
+            @include media-breakpoint-up(sm){
+                padding-top: 0;
+            }
+        }
+
+        .toggle-wrapper{
+
+            .row {
+                align-items: center;
+                margin-top: 3rem;
+            }
+        }
+    }
+}

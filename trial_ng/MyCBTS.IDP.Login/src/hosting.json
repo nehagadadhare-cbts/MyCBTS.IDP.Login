@@ -1,0 +1,6 @@
+﻿{
+  "server.urls": "http://localhost:5000/",
+  //user 'Development', 'Sandbox', 'Beta', 'Production'
+  //"environment": "Production"
+  "environment": "Sandbox"
+}

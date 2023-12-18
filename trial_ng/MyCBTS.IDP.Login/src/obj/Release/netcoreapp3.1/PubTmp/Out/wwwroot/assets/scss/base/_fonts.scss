@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+@font-face {
+    font-family: "MyraidPro";
+    src: url('../../fonts/MyriadPro-Regular.otf') format('otf');
+}
+
+@font-face {
+    font-family: "Gilroy";
+    src: url('../fonts/Gilroy-Bold.otf') format('otf'),
+        url('../fonts/Gilroy-Bold.eot') format('eot'),
+        url('../fonts/Gilroy-Bold.svg') format('svg'),
+        url('../fonts/Gilroy-Bold.ttf') format('ttf'),
+        url('../fonts/Gilroy-Bold.woff') format('woff'),
+        url('../fonts/Gilroy-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Gilroy";
+    src: url('../fonts/Gilroy-Light.otf') format('otf'),
+        url('../fonts/Gilroy-Light.eot') format('eot'),
+        url('../fonts/Gilroy-Light.svg') format('svg'),
+        url('../fonts/Gilroy-Light.ttf') format('ttf'),
+        url('../fonts/Gilroy-Light.woff') format('woff'),
+        url('../fonts/Gilroy-Light.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
