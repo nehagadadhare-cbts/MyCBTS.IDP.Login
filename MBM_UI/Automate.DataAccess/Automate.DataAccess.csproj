@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Automate.DataAccess</RootNamespace>
+    <AssemblyName>Automate.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MBM.UI\Bin\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\MBM.UI\Bin\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet.Async">
+      <HintPath>..\MBM.UI\Bin\Renci.SshNet.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutomateDAL.cs" />
+    <Compile Include="edmx\ApplicationLog.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\AutomateDAL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomateDAL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\AutomateDAL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\AutomateDAL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomateDAL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\ExceptionLog.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_AssoicateAccountsByInvoiceTypeId_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_AssoicateFileTypesByInvoiceTypeId_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_InvoiceDetailsByNumber_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_InvoiceFileTypes_ByInvoiceId_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\Get_InvoiceFileUploads_ByInvoiceId_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_InvoiceNumbersByTypeId_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\get_InvoiceType_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\Get_MBM_ComparisonResult_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\Get_UnprocessedMBMComparisonResult_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\MBMAutomateStatu.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\mbm_Invoice.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\mbm_InvoiceTypes.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\mbm_ProcessWorkFlowStatus.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\mbm_RecordType1_ValidateInvoice_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\mbm_RecordType2_ValidateInvoice_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\PostBillingInMBMAutomate_GetInvoiceRecords_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\ProcessLog.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\ProcessLog_Get_Result.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edmx\TokenHistory.cs">
+      <DependentUpon>AutomateDAL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ActionTypes.cs" />
+    <Compile Include="Entities\Constants.cs" />
+    <Compile Include="Entities\CRMAccount.cs" />
+    <Compile Include="Entities\FileTypes.cs" />
+    <Compile Include="Entities\Header.cs" />
+    <Compile Include="Entities\Invoice.cs" />
+    <Compile Include="Entities\Invoicetype.cs" />
+    <Compile Include="Entities\InvoiceTypeEnum.cs" />
+    <Compile Include="Entities\MBMComparisonResult.cs" />
+    <Compile Include="Entities\MBMComparisonResultCSG.cs" />
+    <Compile Include="Entities\MBMUploadFile.cs" />
+    <Compile Include="Entities\ProcessWorkFlowStatus.cs" />
+    <Compile Include="Entities\RecordValidator.cs" />
+    <Compile Include="Entities\UploadedFiles.cs" />
+    <Compile Include="Log\ExceptionLogging.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="edmx\AutomateDAL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutomateDAL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="edmx\AutomateDAL.edmx.diagram">
+      <DependentUpon>AutomateDAL.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="edmx\AutomateDAL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutomateDAL.edmx</DependentUpon>
+      <LastGenOutput>AutomateDAL.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="edmx\AutomateDAL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutomateDAL.edmx</DependentUpon>
+      <LastGenOutput>AutomateDAL.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

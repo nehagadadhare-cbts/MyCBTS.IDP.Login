@@ -1,0 +1,1503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutomateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="ExceptionDateTime" Type="datetime" />
+          <Property Name="CodeLocation" Type="varchar" MaxLength="300" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" />
+          <Property Name="Message" Type="varchar" MaxLength="8000" />
+          <Property Name="Source" Type="varchar" MaxLength="8000" />
+          <Property Name="TargetSite" Type="varchar" MaxLength="300" />
+          <Property Name="StackTrace" Type="varchar" MaxLength="8000" />
+          <Property Name="LogType" Type="int" />
+        </EntityType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="StackTrace" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mbm_Invoice">
+          <Key>
+            <PropertyRef Name="iInvoiceId" />
+          </Key>
+          <Property Name="iInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iInvoiceTypeId" Type="int" Nullable="false" />
+          <Property Name="sInvoiceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iBillingMonth" Type="int" Nullable="false" />
+          <Property Name="iBillingYear" Type="int" Nullable="false" />
+          <Property Name="iDefaultImportCurrencyID" Type="int" Nullable="false" />
+          <Property Name="sStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sLastAction" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sRecordType1_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtRecordType1_DateTime" Type="datetime" />
+          <Property Name="sRecordType2_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtRecordType2_DateTime" Type="datetime" />
+          <Property Name="sRecordType3_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtRecordType3_DateTime" Type="datetime" />
+          <Property Name="sRecordType4_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtRecordType4_DateTime" Type="datetime" />
+          <Property Name="sRecordType5_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtRecordType5_DateTime" Type="datetime" />
+          <Property Name="sBillingFileExport_Status" Type="varchar" MaxLength="50" />
+          <Property Name="dtBillingFileExport_DateTime" Type="datetime" />
+          <Property Name="sBillingFileExport_Path" Type="varchar" MaxLength="8000" />
+          <Property Name="sExportCurrencyID" Type="int" Nullable="false" />
+          <Property Name="dtCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="sCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtLastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="sLastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="iServiceDeskSnapshot_id" Type="int" />
+          <Property Name="dtInvoiceBillPeriodStart" Type="datetime" />
+          <Property Name="dtInvoiceBillPeriodEnd" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="sBillingSystem" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mbm_InvoiceTypes">
+          <Key>
+            <PropertyRef Name="iInvoiceTypeId" />
+          </Key>
+          <Property Name="iInvoiceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sInvoiceTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sPrefix" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sBAN" Type="varchar" MaxLength="50" />
+          <Property Name="sVendorName" Type="varchar" MaxLength="50" />
+          <Property Name="sImportCurrencyDefault" Type="varchar" MaxLength="3" />
+          <Property Name="sExportCurrencyDefault" Type="varchar" MaxLength="3" />
+          <Property Name="sDefaultFTP" Type="varchar" MaxLength="100" />
+          <Property Name="sFTPUsername" Type="varchar" MaxLength="100" />
+          <Property Name="sFTPPassword" Type="varchar" MaxLength="256" />
+          <Property Name="dtBillCycleStartDate" Type="date" />
+          <Property Name="dtBillCycleEndDate" Type="date" />
+          <Property Name="sCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtCreatedDate" Type="datetime" />
+          <Property Name="sUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtUpdatedDate" Type="datetime" />
+          <Property Name="bIsAutoPreBill" Type="bit" />
+          <Property Name="iDaysBeforeBillCycle" Type="int" />
+          <Property Name="bIsAutoPostBill" Type="bit" />
+          <Property Name="iDaysAfterBillCycle" Type="int" />
+          <Property Name="iOutputFileFormat" Type="int" />
+          <Property Name="sBillingSystem" Type="varchar" MaxLength="50" />
+          <Property Name="iAutomationFrequency" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mbm_ProcessWorkFlowStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sInvoiceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sCompareToCRM" Type="bit" Nullable="false" />
+          <Property Name="sViewChange" Type="bit" Nullable="false" />
+          <Property Name="sApproveChange" Type="bit" Nullable="false" />
+          <Property Name="sSyncCRM" Type="bit" Nullable="false" />
+          <Property Name="sImportCRMData" Type="bit" Nullable="false" />
+          <Property Name="sProcessInvoice" Type="bit" Nullable="false" />
+          <Property Name="sExportInvoiceFile" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MBMAutomateStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceTypeId" Type="int" Nullable="false" />
+          <Property Name="ImportCurrencyId" Type="int" Nullable="false" />
+          <Property Name="ExportCurrenyId" Type="int" Nullable="false" />
+          <Property Name="BillingMonth" Type="int" Nullable="false" />
+          <Property Name="BillingYear" Type="int" Nullable="false" />
+          <Property Name="InsertedBy" Type="varchar" MaxLength="50" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="IsNewInvoice" Type="bit" Nullable="false" />
+          <Property Name="IsInvoiceCreated" Type="bit" Nullable="false" />
+          <Property Name="IsManualFileUpload" Type="bit" Nullable="false" />
+          <Property Name="IsFileTypeUploaded" Type="bit" Nullable="false" />
+          <Property Name="IsComparedToCRM" Type="bit" Nullable="false" />
+          <Property Name="IsViwedChanged" Type="bit" Nullable="false" />
+          <Property Name="IsApprovalMailSent" Type="bit" Nullable="false" />
+          <Property Name="IsApprovedChange" Type="bit" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
+          <Property Name="isPreBillingCompleted" Type="bit" Nullable="false" />
+          <Property Name="IsApprovedByMail" Type="bit" Nullable="false" />
+          <Property Name="IsSyncedCRM" Type="bit" Nullable="false" />
+          <Property Name="IsImportCRM" Type="bit" Nullable="false" />
+          <Property Name="IsProcessInvoice" Type="bit" Nullable="false" />
+          <Property Name="IsExportInvoice" Type="bit" Nullable="false" />
+          <Property Name="LastAction" Type="varchar" MaxLength="100" />
+          <Property Name="isPreBillingOverriden" Type="bit" />
+          <Property Name="CanStartPostBilling" Type="bit" />
+          <Property Name="IsPostBillingCompleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProcessLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="ProcessName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessResult" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcessDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="8000" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TokenHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="ApprovedDate" Type="datetime" />
+          <Property Name="ApprovedBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_MBMAutomateStatus_invType">
+          <End Role="mbm_InvoiceTypes" Type="Self.mbm_InvoiceTypes" Multiplicity="1" />
+          <End Role="MBMAutomateStatus" Type="Self.MBMAutomateStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mbm_InvoiceTypes">
+              <PropertyRef Name="iInvoiceTypeId" />
+            </Principal>
+            <Dependent Role="MBMAutomateStatus">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ApplicationLog_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaxRowsReturned" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ApplicationLog_InsertItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="CodeLocation" Type="varchar" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="Message" Type="varchar" Mode="In" />
+          <Parameter Name="Source" Type="varchar" Mode="In" />
+          <Parameter Name="TargetSite" Type="varchar" Mode="In" />
+          <Parameter Name="StackTrace" Type="varchar" Mode="In" />
+          <Parameter Name="LogType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ExceptionLog_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maxRowsReturned" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ExceptionLog_InsertItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Comment" Type="varchar(max)" Mode="In" />
+          <Parameter Name="StackTrace" Type="varchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="get_AssoicateAccountsByInvoiceTypeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_AssoicateFileTypesByInvoiceTypeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_CRMInputData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceNumber" Type="varchar" Mode="In" />
+          <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="get_InvoiceDetailsByNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="invoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_InvoiceFileTypes_ByInvoiceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_InvoiceFileUploads_ByInvoiceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_InvoiceNumbersByTypeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="invoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="get_InvoiceType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_MBM_ComparisonResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+        </Function>
+      <Function Name="Get_MBM_ComparisonResultCSG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Parameter Name="InvoiceId" Type="int" Mode="In" />
+      </Function>
+        <Function Name="Get_UnprocessedMBMComparisonResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_Invoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceTypeID" Type="int" Mode="In" />
+          <Parameter Name="InvoiceNumber" Type="varchar" Mode="In" />
+          <Parameter Name="BillingMonth" Type="int" Mode="In" />
+          <Parameter Name="BillingYear" Type="int" Mode="In" />
+          <Parameter Name="DefaultImportCurrencyID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="LastAction" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType1_Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType1_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="RecordType2_Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType2_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="RecordType3_Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType3_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="RecordType4_Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType4_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="RecordType5_Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType5_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="BillingFileExport_Status" Type="varchar" Mode="In" />
+          <Parameter Name="BillingFileExport_DateTime" Type="datetime" Mode="In" />
+          <Parameter Name="BillingFileExport_Path" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+          <Parameter Name="ServiceDeskSnapshotID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_InvoiceByMBMAutomate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="insert_InvoiceByMBMAutomate_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="insert_InvoiceByMBMAutomate_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_InvoiceInMBMAutomate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Insert_MBM_ComparisonResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="InvoiceTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_MBMdata_ByInvoiceIdInvoiceType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="InvoiceTypeID" Type="int" Mode="In" />
+          <Parameter Name="FileTypeID" Type="int" Mode="In" />
+          <Parameter Name="FileName" Type="varchar" Mode="In" />
+          <Parameter Name="uploadedby" Type="varchar" Mode="In" />
+          <Parameter Name="uploadfileID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_FetchCRMDataFromUI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceNumber" Type="varchar" Mode="In" />
+          <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType1_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType1_ValidateInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType2_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType2_ValidateInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType3_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType4_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RecordType5_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="ExportCurrencyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RT1Summary_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RT2Summary_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="mbm_RT4Summary_Process" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PostBillingInMBMAutomate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PostBillingInMBMAutomate_GetInvoiceRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcessLog_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="MaxRowsToReturn" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcessLog_InsertItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="ProcessName" Type="varchar" Mode="In" />
+          <Parameter Name="ProcessResult" Type="varchar" Mode="In" />
+          <Parameter Name="ProcessDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="Comment" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_InvoiceRecordTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="RecordType1Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType2Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType3Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType4Status" Type="varchar" Mode="In" />
+          <Parameter Name="RecordType5Status" Type="varchar" Mode="In" />
+          <Parameter Name="LastUpdatedBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_MBMAutomateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="value" Type="bit" Mode="In" />
+          <Parameter Name="StatusOf" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_ProcessWorkFlowStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceNumber" Type="varchar" Mode="In" />
+          <Parameter Name="CompareToCRM" Type="bit" Mode="In" />
+          <Parameter Name="ViewChange" Type="bit" Mode="In" />
+          <Parameter Name="ApproveChange" Type="bit" Mode="In" />
+          <Parameter Name="SyncCRM" Type="bit" Mode="In" />
+          <Parameter Name="ImportCRMData" Type="bit" Mode="In" />
+          <Parameter Name="ProcessInvoice" Type="bit" Mode="In" />
+          <Parameter Name="ExportInvoiceFile" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_mbm_CBADCRMData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_mbm_CBADTaxData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_mbm_GetMultiLocationSummaryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InvoiceId" Type="int" Mode="In" />
+          <Parameter Name="LoggedInUser" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AutomateModelStoreContainer">
+          <EntitySet Name="ApplicationLog" EntityType="Self.ApplicationLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mbm_Invoice" EntityType="Self.mbm_Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mbm_InvoiceTypes" EntityType="Self.mbm_InvoiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mbm_ProcessWorkFlowStatus" EntityType="Self.mbm_ProcessWorkFlowStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MBMAutomateStatus" EntityType="Self.MBMAutomateStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessLog" EntityType="Self.ProcessLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TokenHistory" EntityType="Self.TokenHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_MBMAutomateStatus_invType" Association="Self.fk_MBMAutomateStatus_invType">
+            <End Role="mbm_InvoiceTypes" EntitySet="mbm_InvoiceTypes" />
+            <End Role="MBMAutomateStatus" EntitySet="MBMAutomateStatus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutomateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mbm_Invoice">
+          <Key>
+            <PropertyRef Name="iInvoiceId" />
+          </Key>
+          <Property Name="iInvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iInvoiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="sInvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iBillingMonth" Type="Int32" Nullable="false" />
+          <Property Name="iBillingYear" Type="Int32" Nullable="false" />
+          <Property Name="iDefaultImportCurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="sStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sLastAction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sRecordType1_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtRecordType1_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sRecordType2_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtRecordType2_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sRecordType3_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtRecordType3_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sRecordType4_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtRecordType4_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sRecordType5_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtRecordType5_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sBillingFileExport_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtBillingFileExport_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="sBillingFileExport_Path" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="sExportCurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="dtCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sLastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="iServiceDeskSnapshot_id" Type="Int32" />
+          <Property Name="dtInvoiceBillPeriodStart" Type="DateTime" Precision="3" />
+          <Property Name="dtInvoiceBillPeriodEnd" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mbm_InvoiceTypes" Relationship="Self.FK_mbm_Invoice_mbm_InvoiceTypes" FromRole="mbm_Invoice" ToRole="mbm_InvoiceTypes" />
+          <Property Name="sBillingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mbm_InvoiceTypes">
+          <Key>
+            <PropertyRef Name="iInvoiceTypeId" />
+          </Key>
+          <Property Name="iInvoiceTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sInvoiceTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sPrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sVendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sImportCurrencyDefault" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sExportCurrencyDefault" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sDefaultFTP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sFTPUsername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sFTPPassword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="dtBillCycleStartDate" Type="DateTime" Precision="0" />
+          <Property Name="dtBillCycleEndDate" Type="DateTime" Precision="0" />
+          <Property Name="sCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="sUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="bIsAutoPreBill" Type="Boolean" />
+          <Property Name="iDaysBeforeBillCycle" Type="Int32" />
+          <Property Name="bIsAutoPostBill" Type="Boolean" />
+          <Property Name="iDaysAfterBillCycle" Type="Int32" />
+          <NavigationProperty Name="mbm_Invoice" Relationship="Self.FK_mbm_Invoice_mbm_InvoiceTypes" FromRole="mbm_InvoiceTypes" ToRole="mbm_Invoice" />
+          <NavigationProperty Name="MBMAutomateStatus" Relationship="Self.fk_MBMAutomateStatus_invType" FromRole="mbm_InvoiceTypes" ToRole="MBMAutomateStatus" />
+          <Property Type="Int32" Name="iOutputFileFormat" />
+          <Property Name="sBillingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="iAutomationFrequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mbm_ProcessWorkFlowStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sInvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sCompareToCRM" Type="Boolean" Nullable="false" />
+          <Property Name="sViewChange" Type="Boolean" Nullable="false" />
+          <Property Name="sApproveChange" Type="Boolean" Nullable="false" />
+          <Property Name="sSyncCRM" Type="Boolean" Nullable="false" />
+          <Property Name="sImportCRMData" Type="Boolean" Nullable="false" />
+          <Property Name="sProcessInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="sExportInvoiceFile" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MBMAutomateStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ImportCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="ExportCurrenyId" Type="Int32" Nullable="false" />
+          <Property Name="BillingMonth" Type="Int32" Nullable="false" />
+          <Property Name="BillingYear" Type="Int32" Nullable="false" />
+          <Property Name="InsertedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="IsNewInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="IsInvoiceCreated" Type="Boolean" Nullable="false" />
+          <Property Name="IsManualFileUpload" Type="Boolean" Nullable="false" />
+          <Property Name="IsFileTypeUploaded" Type="Boolean" Nullable="false" />
+          <Property Name="IsComparedToCRM" Type="Boolean" Nullable="false" />
+          <Property Name="IsViwedChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsApprovalMailSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsApprovedChange" Type="Boolean" Nullable="false" />
+          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
+          <Property Name="isPreBillingCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsApprovedByMail" Type="Boolean" Nullable="false" />
+          <Property Name="IsSyncedCRM" Type="Boolean" Nullable="false" />
+          <Property Name="IsImportCRM" Type="Boolean" Nullable="false" />
+          <Property Name="IsProcessInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="IsExportInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="LastAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mbm_InvoiceTypes" Relationship="Self.fk_MBMAutomateStatus_invType" FromRole="MBMAutomateStatus" ToRole="mbm_InvoiceTypes" />
+          <Property Name="isPreBillingOverriden" Type="Boolean" />
+          <Property Name="CanStartPostBilling" Type="Boolean" />
+          <Property Name="IsPostBillingCompleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TokenHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+          <Property Name="ApprovedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_mbm_Invoice_mbm_InvoiceTypes">
+          <End Role="mbm_InvoiceTypes" Type="Self.mbm_InvoiceTypes" Multiplicity="1" />
+          <End Role="mbm_Invoice" Type="Self.mbm_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mbm_InvoiceTypes">
+              <PropertyRef Name="iInvoiceTypeId" />
+            </Principal>
+            <Dependent Role="mbm_Invoice">
+              <PropertyRef Name="iInvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MBMAutomateStatus_invType">
+          <End Role="mbm_InvoiceTypes" Type="Self.mbm_InvoiceTypes" Multiplicity="1" />
+          <End Role="MBMAutomateStatus" Type="Self.MBMAutomateStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mbm_InvoiceTypes">
+              <PropertyRef Name="iInvoiceTypeId" />
+            </Principal>
+            <Dependent Role="MBMAutomateStatus">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutomateEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mbm_Invoice" EntityType="Self.mbm_Invoice" />
+          <EntitySet Name="mbm_InvoiceTypes" EntityType="Self.mbm_InvoiceTypes" />
+          <EntitySet Name="mbm_ProcessWorkFlowStatus" EntityType="Self.mbm_ProcessWorkFlowStatus" />
+          <EntitySet Name="MBMAutomateStatus" EntityType="Self.MBMAutomateStatu" />
+          <EntitySet Name="TokenHistories" EntityType="Self.TokenHistory" />
+          <AssociationSet Name="FK_mbm_Invoice_mbm_InvoiceTypes" Association="Self.FK_mbm_Invoice_mbm_InvoiceTypes">
+            <End Role="mbm_InvoiceTypes" EntitySet="mbm_InvoiceTypes" />
+            <End Role="mbm_Invoice" EntitySet="mbm_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MBMAutomateStatus_invType" Association="Self.fk_MBMAutomateStatus_invType">
+            <End Role="mbm_InvoiceTypes" EntitySet="mbm_InvoiceTypes" />
+            <End Role="MBMAutomateStatus" EntitySet="MBMAutomateStatus" />
+          </AssociationSet>
+          <FunctionImport Name="get_AssoicateAccountsByInvoiceTypeId" ReturnType="Collection(AutomateModel.get_AssoicateAccountsByInvoiceTypeId_Result)">
+          <Parameter Name="InvoiceTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_AssoicateFileTypesByInvoiceTypeId" ReturnType="Collection(AutomateModel.get_AssoicateFileTypesByInvoiceTypeId_Result)">
+          <Parameter Name="InvoiceTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_CRMInputData">
+            <Parameter Name="InvoiceNumber" Mode="In" Type="String" />
+            <Parameter Name="LoggedInUser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="get_InvoiceDetailsByNumber" ReturnType="Collection(AutomateModel.get_InvoiceDetailsByNumber_Result)">
+          <Parameter Name="invoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_InvoiceFileTypes_ByInvoiceId" ReturnType="Collection(AutomateModel.get_InvoiceFileTypes_ByInvoiceId_Result)">
+          <Parameter Name="InvoiceTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_InvoiceFileUploads_ByInvoiceId" ReturnType="Collection(AutomateModel.Get_InvoiceFileUploads_ByInvoiceId_Result)">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_InvoiceNumbersByTypeId" ReturnType="Collection(AutomateModel.get_InvoiceNumbersByTypeId_Result)">
+          <Parameter Name="invoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="get_InvoiceType" ReturnType="Collection(AutomateModel.get_InvoiceType_Result)" />
+          <FunctionImport Name="Get_MBM_ComparisonResult" ReturnType="Collection(AutomateModel.Get_MBM_ComparisonResult_Result)">
+          <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_MBM_ComparisonResultCSG" ReturnType="Collection(AutomateModel.Get_MBM_ComparisonResultCSG)">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Get_UnprocessedMBMComparisonResult" ReturnType="Collection(AutomateModel.Get_UnprocessedMBMComparisonResult_Result)">
+          <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_Invoice">
+            <Parameter Name="InvoiceTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceNumber" Mode="In" Type="String" />
+            <Parameter Name="BillingMonth" Mode="In" Type="Int32" />
+            <Parameter Name="BillingYear" Mode="In" Type="Int32" />
+            <Parameter Name="DefaultImportCurrencyID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="LastAction" Mode="In" Type="String" />
+            <Parameter Name="RecordType1_Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType1_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordType2_Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType2_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordType3_Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType3_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordType4_Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType4_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="RecordType5_Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType5_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="BillingFileExport_Status" Mode="In" Type="String" />
+            <Parameter Name="BillingFileExport_DateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="BillingFileExport_Path" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+            <Parameter Name="ServiceDeskSnapshotID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_InvoiceInMBMAutomate" />
+          <FunctionImport Name="Insert_MBM_ComparisonResult">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_MBMdata_ByInvoiceIdInvoiceType">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="FileTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="FileName" Mode="In" Type="String" />
+            <Parameter Name="uploadedby" Mode="In" Type="String" />
+            <Parameter Name="uploadfileID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_FetchCRMDataFromUI">
+            <Parameter Name="InvoiceNumber" Mode="In" Type="String" />
+            <Parameter Name="LoggedInUser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_InvoiceRecordTypes">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="RecordType1Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType2Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType3Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType4Status" Mode="In" Type="String" />
+            <Parameter Name="RecordType5Status" Mode="In" Type="String" />
+            <Parameter Name="LastUpdatedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_ProcessWorkFlowStatus">
+            <Parameter Name="InvoiceNumber" Mode="In" Type="String" />
+            <Parameter Name="CompareToCRM" Mode="In" Type="Boolean" />
+            <Parameter Name="ViewChange" Mode="In" Type="Boolean" />
+            <Parameter Name="ApproveChange" Mode="In" Type="Boolean" />
+            <Parameter Name="SyncCRM" Mode="In" Type="Boolean" />
+            <Parameter Name="ImportCRMData" Mode="In" Type="Boolean" />
+            <Parameter Name="ProcessInvoice" Mode="In" Type="Boolean" />
+            <Parameter Name="ExportInvoiceFile" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType1_Process">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType1_ValidateInvoice" ReturnType="Collection(AutomateModel.mbm_RecordType1_ValidateInvoice_Result)">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType2_Process">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType2_ValidateInvoice" ReturnType="Collection(AutomateModel.mbm_RecordType2_ValidateInvoice_Result)">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_InvoiceByMBMAutomate" />
+          <FunctionImport Name="PostBillingInMBMAutomate" />
+          <FunctionImport Name="insert_InvoiceByMBMAutomate_all" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="insert_InvoiceByMBMAutomate_Process">
+          <Parameter Name="InvoiceTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ApplicationLogs" EntityType="AutomateModel.ApplicationLog" />
+          <EntitySet Name="ExceptionLogs" EntityType="AutomateModel.ExceptionLog" />
+          <EntitySet Name="ProcessLogs" EntityType="AutomateModel.ProcessLog" />
+          <FunctionImport Name="ApplicationLog_Get">
+          <Parameter Name="MaxRowsReturned" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ApplicationLog_InsertItem">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExceptionDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CodeLocation" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="Message" Mode="In" Type="String" />
+            <Parameter Name="Source" Mode="In" Type="String" />
+            <Parameter Name="TargetSite" Mode="In" Type="String" />
+            <Parameter Name="StackTrace" Mode="In" Type="String" />
+            <Parameter Name="LogType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ExceptionLog_Get">
+          <Parameter Name="maxRowsReturned" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ExceptionLog_InsertItem">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="StackTrace" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProcessLog_Get" ReturnType="Collection(AutomateModel.ProcessLog_Get_Result)">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="MaxRowsToReturn" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcessLog_InsertItem">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="ProcessName" Mode="In" Type="String" />
+            <Parameter Name="ProcessResult" Mode="In" Type="String" />
+            <Parameter Name="ProcessDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PostBillingInMBMAutomate_GetInvoiceRecords" ReturnType="Collection(AutomateModel.PostBillingInMBMAutomate_GetInvoiceRecords_Result)" />
+          <FunctionImport Name="update_MBMAutomateStatus">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="value" Mode="In" Type="Boolean" />
+            <Parameter Name="StatusOf" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mbm_CBADCRMData">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="LoggedInUser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mbm_CBADTaxData">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="LoggedInUser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mbm_GetMultiLocationSummaryData">
+            <Parameter Name="InvoiceId" Mode="In" Type="Int32" />
+            <Parameter Name="LoggedInUser" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType3_Process">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType4_Process">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RecordType5_Process">
+            <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="ExportCurrencyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RT1Summary_Process">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RT2Summary_Process">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mbm_RT4Summary_Process">
+          <Parameter Name="InvoiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="get_AssoicateAccountsByInvoiceTypeId_Result">
+          <Property Type="Int64" Name="iAccountNumber" Nullable="false" />
+          <Property Type="String" Name="sAccountName" Nullable="true" MaxLength="75" />
+          <Property Type="String" Name="sStringIdentifier" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="iParentAccountNumber" Nullable="true" />
+          <Property Type="String" Name="sParentAccountName" Nullable="true" MaxLength="75" />
+          <Property Type="Boolean" Name="bCreateAccount" Nullable="true" />
+          <Property Type="Int32" Name="iBillCycle" Nullable="true" />
+          <Property Type="DateTime" Name="EffectiveBillDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="get_AssoicateFileTypesByInvoiceTypeId_Result">
+          <Property Type="Int32" Name="iAssociatedFileId" Nullable="false" />
+          <Property Type="String" Name="sFileType" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="iFileTypeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="get_InvoiceDetailsByNumber_Result">
+          <Property Type="Int32" Name="iInvoiceId" Nullable="false" />
+          <Property Type="Int32" Name="iInvoiceTypeId" Nullable="false" />
+          <Property Type="String" Name="sInvoiceNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="iBillingMonth" Nullable="false" />
+          <Property Type="Int32" Name="iBillingYear" Nullable="false" />
+          <Property Type="Int32" Name="iDefaultImportCurrencyID" Nullable="false" />
+          <Property Type="String" Name="sStatus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sLastAction" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sRecordType1_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType1_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType2_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType2_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType3_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType3_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType4_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType4_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType5_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType5_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sBillingFileExport_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtBillingFileExport_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sBillingFileExport_Path" Nullable="true" MaxLength="8000" />
+          <Property Type="Int32" Name="sExportCurrencyID" Nullable="false" />
+          <Property Type="DateTime" Name="dtCreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="sCreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtLastUpdatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="sLastUpdatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="iServiceDeskSnapshot_id" Nullable="true" />
+          <Property Type="DateTime" Name="dtInvoiceBillPeriodStart" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dtInvoiceBillPeriodEnd" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="get_InvoiceFileTypes_ByInvoiceId_Result">
+          <Property Type="Int32" Name="iAssociatedFileId" Nullable="false" />
+          <Property Type="Int32" Name="iInvoiceTypeId" Nullable="false" />
+          <Property Type="Int32" Name="iFileTypeId" Nullable="false" />
+          <Property Type="String" Name="sFileType" Nullable="false" MaxLength="75" />
+        </ComplexType>
+        <ComplexType Name="Get_InvoiceFileUploads_ByInvoiceId_Result">
+          <Property Type="Int32" Name="iUploadedFileId" Nullable="false" />
+          <Property Type="Int32" Name="iInvoiceId" Nullable="false" />
+          <Property Type="Int32" Name="iFileTypeId" Nullable="false" />
+          <Property Type="String" Name="sFilePath" Nullable="false" MaxLength="300" />
+          <Property Type="Int32" Name="iSnapshotId" Nullable="true" />
+          <Property Type="String" Name="sUploadedStatus" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="dtUploadedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sUploadedBy" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="sFileType" Nullable="false" MaxLength="75" />
+        </ComplexType>
+        <ComplexType Name="get_InvoiceNumbersByTypeId_Result">
+          <Property Type="Int32" Name="iInvoiceId" Nullable="false" />
+          <Property Type="Int32" Name="iInvoiceTypeId" Nullable="false" />
+          <Property Type="String" Name="sInvoiceNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="iBillingMonth" Nullable="false" />
+          <Property Type="Int32" Name="iBillingYear" Nullable="false" />
+          <Property Type="Int32" Name="iDefaultImportCurrencyID" Nullable="false" />
+          <Property Type="String" Name="sStatus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sLastAction" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sRecordType1_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType1_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType2_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType2_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType3_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType3_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType4_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType4_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sRecordType5_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtRecordType5_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sBillingFileExport_Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtBillingFileExport_DateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sBillingFileExport_Path" Nullable="true" MaxLength="8000" />
+          <Property Type="Int32" Name="sExportCurrencyID" Nullable="false" />
+          <Property Type="DateTime" Name="dtCreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="sCreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtLastUpdatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="sLastUpdatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="iServiceDeskSnapshot_id" Nullable="true" />
+          <Property Type="DateTime" Name="dtInvoiceBillPeriodStart" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dtInvoiceBillPeriodEnd" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="get_InvoiceType_Result">
+          <Property Type="Int32" Name="iInvoiceTypeId" Nullable="false" />
+          <Property Type="String" Name="sInvoiceTypeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sPrefix" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="sBAN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sVendorName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sImportCurrencyDefault" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="sExportCurrencyDefault" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="sDefaultFTP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sFTPUsername" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sFTPPassword" Nullable="true" MaxLength="256" />
+          <Property Type="Boolean" Name="bIsAutoPreBill" Nullable="true" />
+          <Property Type="Int32" Name="iDaysBeforeBillCycle" Nullable="true" />
+          <Property Type="Boolean" Name="bIsAutoPostBill" Nullable="true" />
+          <Property Type="Int32" Name="iDaysAfterBillCycle" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_MBM_ComparisonResult_Result">
+          <Property Type="Int32" Name="iSnapshotId" Nullable="true" />
+          <Property Type="Int32" Name="iInvoiceId" Nullable="true" />
+          <Property Type="String" Name="sCRMAccountNumber" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="sAssetSearchCode1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sAssetSearchCode2" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="mCharge" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="iActionType" Nullable="false" />
+          <Property Type="String" Name="sProfileName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="iGLCode" Nullable="true" />
+          <Property Type="String" Name="sFeatureCode" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtMainStart" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dtMainEnd" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sItemType" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="sSubType" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="sSwitchId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sItemId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sSequenceId" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="iLoadId" Nullable="true" />
+          <Property Type="Int32" Name="iProcessed" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_MBM_ComparisonResultCSG">
+          <Property Type="Int32" Name="iSnapshotId" Nullable="true" />
+          <Property Type="Int32" Name="iInvoiceId" Nullable="true" />
+          <Property Type="String" Name="sCSGAccountNumber" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="sAssetSearchCode1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sAssetSearchCode2" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="mCharge" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="iActionType" Nullable="false" />
+          <Property Type="String" Name="sProfileName" Nullable="true" MaxLength="100" />         
+          <Property Type="String" Name="sOfferExternalRef" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sProductExternalRef" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sPricingPlanExternalRef" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sMBMUniqueID" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="dtMainStart" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dtMainEnd" Nullable="true" Precision="23" />
+          <!--<Property Type="String" Name="sItemType" Nullable="true" MaxLength="10" />-->
+          <!--<Property Type="String" Name="sSubType" Nullable="true" MaxLength="10" />-->
+          <!--<Property Type="String" Name="sSwitchId" Nullable="true" MaxLength="20" />-->
+          <!--<Property Type="String" Name="sItemId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sSequenceId" Nullable="true" MaxLength="20" />-->
+          <Property Type="Int32" Name="iLoadId" Nullable="true" />
+          <Property Type="Int32" Name="iProcessed" Nullable="true" />
+          <Property Type="String" Name="sSubscriberId" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        
+        <ComplexType Name="Get_UnprocessedMBMComparisonResult_Result">
+          <Property Type="Int32" Name="iSnapshotId" Nullable="true" />
+          <Property Type="Int32" Name="iInvoiceId" Nullable="true" />
+          <Property Type="String" Name="sCRMAccountNumber" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="sAssetSearchCode1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sAssetSearchCode2" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="mCharge" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="iActionType" Nullable="false" />
+          <Property Type="String" Name="sProfileName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="iGLCode" Nullable="true" />
+          <Property Type="String" Name="sFeatureCode" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dtMainStart" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dtMainEnd" Nullable="true" Precision="23" />
+          <Property Type="String" Name="sItemType" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="sSubType" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="sSwitchId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sItemId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="sSequenceId" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="iLoadId" Nullable="true" />
+          <Property Type="Int32" Name="iProcessed" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="mbm_RecordType1_ValidateInvoice_Result">
+          <Property Type="String" Name="BAN" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="RecordType1_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RecordType3_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RecordType5_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="Validated" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="mbm_RecordType2_ValidateInvoice_Result">
+          <Property Type="String" Name="BAN" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="RecordType2_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RecordType3_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="RecordType5_Sum" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Boolean" Name="Validated" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ApplicationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InvoiceID" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ExceptionDateTime" Precision="3" />
+          <Property Type="String" Name="CodeLocation" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comment" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Source" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TargetSite" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LogType" />
+        </EntityType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InvoiceID" />
+          <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StackTrace" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProcessLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="InvoiceID" Nullable="false" />
+          <Property Type="String" Name="ProcessName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProcessResult" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ProcessDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Comment" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="ProcessLog_Get_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="InvoiceID" Nullable="false" />
+          <Property Type="Int32" Name="InvoiceType" Nullable="true" />
+          <Property Type="String" Name="InvoiceNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ProcessName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ProcessResult" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="ProcessDateTime" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="8000" />
+        </ComplexType>
+        <ComplexType Name="PostBillingInMBMAutomate_GetInvoiceRecords_Result">
+          <Property Type="Int32" Name="InvoiceTypeId" Nullable="false" />
+          <Property Type="String" Name="InvoiceNumber" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="InvoiceId" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutomateModelStoreContainer" CdmEntityContainer="AutomateEntities">
+          <EntitySetMapping Name="mbm_Invoice">
+            <EntityTypeMapping TypeName="AutomateModel.mbm_Invoice">
+              <MappingFragment StoreEntitySet="mbm_Invoice">
+                <ScalarProperty Name="sBillingSystem" ColumnName="sBillingSystem" />
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="sInvoiceNumber" ColumnName="sInvoiceNumber" />
+                <ScalarProperty Name="iBillingMonth" ColumnName="iBillingMonth" />
+                <ScalarProperty Name="iBillingYear" ColumnName="iBillingYear" />
+                <ScalarProperty Name="iDefaultImportCurrencyID" ColumnName="iDefaultImportCurrencyID" />
+                <ScalarProperty Name="sStatus" ColumnName="sStatus" />
+                <ScalarProperty Name="sLastAction" ColumnName="sLastAction" />
+                <ScalarProperty Name="sRecordType1_Status" ColumnName="sRecordType1_Status" />
+                <ScalarProperty Name="dtRecordType1_DateTime" ColumnName="dtRecordType1_DateTime" />
+                <ScalarProperty Name="sRecordType2_Status" ColumnName="sRecordType2_Status" />
+                <ScalarProperty Name="dtRecordType2_DateTime" ColumnName="dtRecordType2_DateTime" />
+                <ScalarProperty Name="sRecordType3_Status" ColumnName="sRecordType3_Status" />
+                <ScalarProperty Name="dtRecordType3_DateTime" ColumnName="dtRecordType3_DateTime" />
+                <ScalarProperty Name="sRecordType4_Status" ColumnName="sRecordType4_Status" />
+                <ScalarProperty Name="dtRecordType4_DateTime" ColumnName="dtRecordType4_DateTime" />
+                <ScalarProperty Name="sRecordType5_Status" ColumnName="sRecordType5_Status" />
+                <ScalarProperty Name="dtRecordType5_DateTime" ColumnName="dtRecordType5_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Status" ColumnName="sBillingFileExport_Status" />
+                <ScalarProperty Name="dtBillingFileExport_DateTime" ColumnName="dtBillingFileExport_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Path" ColumnName="sBillingFileExport_Path" />
+                <ScalarProperty Name="sExportCurrencyID" ColumnName="sExportCurrencyID" />
+                <ScalarProperty Name="dtCreatedDate" ColumnName="dtCreatedDate" />
+                <ScalarProperty Name="sCreatedBy" ColumnName="sCreatedBy" />
+                <ScalarProperty Name="dtLastUpdatedDate" ColumnName="dtLastUpdatedDate" />
+                <ScalarProperty Name="sLastUpdatedBy" ColumnName="sLastUpdatedBy" />
+                <ScalarProperty Name="iServiceDeskSnapshot_id" ColumnName="iServiceDeskSnapshot_id" />
+                <ScalarProperty Name="dtInvoiceBillPeriodStart" ColumnName="dtInvoiceBillPeriodStart" />
+                <ScalarProperty Name="dtInvoiceBillPeriodEnd" ColumnName="dtInvoiceBillPeriodEnd" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mbm_InvoiceTypes">
+            <EntityTypeMapping TypeName="AutomateModel.mbm_InvoiceTypes">
+              <MappingFragment StoreEntitySet="mbm_InvoiceTypes">
+                <ScalarProperty Name="iAutomationFrequency" ColumnName="iAutomationFrequency" />
+                <ScalarProperty Name="sBillingSystem" ColumnName="sBillingSystem" />
+                <ScalarProperty Name="iOutputFileFormat" ColumnName="iOutputFileFormat" />
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="sInvoiceTypeName" ColumnName="sInvoiceTypeName" />
+                <ScalarProperty Name="sPrefix" ColumnName="sPrefix" />
+                <ScalarProperty Name="sBAN" ColumnName="sBAN" />
+                <ScalarProperty Name="sVendorName" ColumnName="sVendorName" />
+                <ScalarProperty Name="sImportCurrencyDefault" ColumnName="sImportCurrencyDefault" />
+                <ScalarProperty Name="sExportCurrencyDefault" ColumnName="sExportCurrencyDefault" />
+                <ScalarProperty Name="sDefaultFTP" ColumnName="sDefaultFTP" />
+                <ScalarProperty Name="sFTPUsername" ColumnName="sFTPUsername" />
+                <ScalarProperty Name="sFTPPassword" ColumnName="sFTPPassword" />
+                <ScalarProperty Name="dtBillCycleStartDate" ColumnName="dtBillCycleStartDate" />
+                <ScalarProperty Name="dtBillCycleEndDate" ColumnName="dtBillCycleEndDate" />
+                <ScalarProperty Name="sCreatedBy" ColumnName="sCreatedBy" />
+                <ScalarProperty Name="dtCreatedDate" ColumnName="dtCreatedDate" />
+                <ScalarProperty Name="sUpdatedBy" ColumnName="sUpdatedBy" />
+                <ScalarProperty Name="dtUpdatedDate" ColumnName="dtUpdatedDate" />
+                <ScalarProperty Name="bIsAutoPreBill" ColumnName="bIsAutoPreBill" />
+                <ScalarProperty Name="iDaysBeforeBillCycle" ColumnName="iDaysBeforeBillCycle" />
+                <ScalarProperty Name="bIsAutoPostBill" ColumnName="bIsAutoPostBill" />
+                <ScalarProperty Name="iDaysAfterBillCycle" ColumnName="iDaysAfterBillCycle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mbm_ProcessWorkFlowStatus">
+            <EntityTypeMapping TypeName="AutomateModel.mbm_ProcessWorkFlowStatus">
+              <MappingFragment StoreEntitySet="mbm_ProcessWorkFlowStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sInvoiceNumber" ColumnName="sInvoiceNumber" />
+                <ScalarProperty Name="sCompareToCRM" ColumnName="sCompareToCRM" />
+                <ScalarProperty Name="sViewChange" ColumnName="sViewChange" />
+                <ScalarProperty Name="sApproveChange" ColumnName="sApproveChange" />
+                <ScalarProperty Name="sSyncCRM" ColumnName="sSyncCRM" />
+                <ScalarProperty Name="sImportCRMData" ColumnName="sImportCRMData" />
+                <ScalarProperty Name="sProcessInvoice" ColumnName="sProcessInvoice" />
+                <ScalarProperty Name="sExportInvoiceFile" ColumnName="sExportInvoiceFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBMAutomateStatus">
+            <EntityTypeMapping TypeName="AutomateModel.MBMAutomateStatu">
+              <MappingFragment StoreEntitySet="MBMAutomateStatus">
+                <ScalarProperty Name="IsPostBillingCompleted" ColumnName="IsPostBillingCompleted" />
+                <ScalarProperty Name="CanStartPostBilling" ColumnName="CanStartPostBilling" />
+                <ScalarProperty Name="isPreBillingOverriden" ColumnName="isPreBillingOverriden" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="ImportCurrencyId" ColumnName="ImportCurrencyId" />
+                <ScalarProperty Name="ExportCurrenyId" ColumnName="ExportCurrenyId" />
+                <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+                <ScalarProperty Name="BillingYear" ColumnName="BillingYear" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="IsNewInvoice" ColumnName="IsNewInvoice" />
+                <ScalarProperty Name="IsInvoiceCreated" ColumnName="IsInvoiceCreated" />
+                <ScalarProperty Name="IsManualFileUpload" ColumnName="IsManualFileUpload" />
+                <ScalarProperty Name="IsFileTypeUploaded" ColumnName="IsFileTypeUploaded" />
+                <ScalarProperty Name="IsComparedToCRM" ColumnName="IsComparedToCRM" />
+                <ScalarProperty Name="IsViwedChanged" ColumnName="IsViwedChanged" />
+                <ScalarProperty Name="IsApprovalMailSent" ColumnName="IsApprovalMailSent" />
+                <ScalarProperty Name="IsApprovedChange" ColumnName="IsApprovedChange" />
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="isPreBillingCompleted" ColumnName="isPreBillingCompleted" />
+                <ScalarProperty Name="IsApprovedByMail" ColumnName="IsApprovedByMail" />
+                <ScalarProperty Name="IsSyncedCRM" ColumnName="IsSyncedCRM" />
+                <ScalarProperty Name="IsImportCRM" ColumnName="IsImportCRM" />
+                <ScalarProperty Name="IsProcessInvoice" ColumnName="IsProcessInvoice" />
+                <ScalarProperty Name="IsExportInvoice" ColumnName="IsExportInvoice" />
+                <ScalarProperty Name="LastAction" ColumnName="LastAction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TokenHistories">
+            <EntityTypeMapping TypeName="AutomateModel.TokenHistory">
+              <MappingFragment StoreEntitySet="TokenHistory">
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_AssoicateAccountsByInvoiceTypeId" FunctionName="AutomateModel.Store.get_AssoicateAccountsByInvoiceTypeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_AssoicateAccountsByInvoiceTypeId_Result">
+                <ScalarProperty Name="iAccountNumber" ColumnName="iAccountNumber" />
+                <ScalarProperty Name="sAccountName" ColumnName="sAccountName" />
+                <ScalarProperty Name="sStringIdentifier" ColumnName="sStringIdentifier" />
+                <ScalarProperty Name="iParentAccountNumber" ColumnName="iParentAccountNumber" />
+                <ScalarProperty Name="sParentAccountName" ColumnName="sParentAccountName" />
+                <ScalarProperty Name="bCreateAccount" ColumnName="bCreateAccount" />
+                <ScalarProperty Name="iBillCycle" ColumnName="iBillCycle" />
+                <ScalarProperty Name="EffectiveBillDate" ColumnName="EffectiveBillDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_AssoicateFileTypesByInvoiceTypeId" FunctionName="AutomateModel.Store.get_AssoicateFileTypesByInvoiceTypeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_AssoicateFileTypesByInvoiceTypeId_Result">
+                <ScalarProperty Name="iAssociatedFileId" ColumnName="iAssociatedFileId" />
+                <ScalarProperty Name="sFileType" ColumnName="sFileType" />
+                <ScalarProperty Name="iFileTypeId" ColumnName="iFileTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_CRMInputData" FunctionName="AutomateModel.Store.get_CRMInputData" />
+          <FunctionImportMapping FunctionImportName="get_InvoiceDetailsByNumber" FunctionName="AutomateModel.Store.get_InvoiceDetailsByNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_InvoiceDetailsByNumber_Result">
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="sInvoiceNumber" ColumnName="sInvoiceNumber" />
+                <ScalarProperty Name="iBillingMonth" ColumnName="iBillingMonth" />
+                <ScalarProperty Name="iBillingYear" ColumnName="iBillingYear" />
+                <ScalarProperty Name="iDefaultImportCurrencyID" ColumnName="iDefaultImportCurrencyID" />
+                <ScalarProperty Name="sStatus" ColumnName="sStatus" />
+                <ScalarProperty Name="sLastAction" ColumnName="sLastAction" />
+                <ScalarProperty Name="sRecordType1_Status" ColumnName="sRecordType1_Status" />
+                <ScalarProperty Name="dtRecordType1_DateTime" ColumnName="dtRecordType1_DateTime" />
+                <ScalarProperty Name="sRecordType2_Status" ColumnName="sRecordType2_Status" />
+                <ScalarProperty Name="dtRecordType2_DateTime" ColumnName="dtRecordType2_DateTime" />
+                <ScalarProperty Name="sRecordType3_Status" ColumnName="sRecordType3_Status" />
+                <ScalarProperty Name="dtRecordType3_DateTime" ColumnName="dtRecordType3_DateTime" />
+                <ScalarProperty Name="sRecordType4_Status" ColumnName="sRecordType4_Status" />
+                <ScalarProperty Name="dtRecordType4_DateTime" ColumnName="dtRecordType4_DateTime" />
+                <ScalarProperty Name="sRecordType5_Status" ColumnName="sRecordType5_Status" />
+                <ScalarProperty Name="dtRecordType5_DateTime" ColumnName="dtRecordType5_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Status" ColumnName="sBillingFileExport_Status" />
+                <ScalarProperty Name="dtBillingFileExport_DateTime" ColumnName="dtBillingFileExport_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Path" ColumnName="sBillingFileExport_Path" />
+                <ScalarProperty Name="sExportCurrencyID" ColumnName="sExportCurrencyID" />
+                <ScalarProperty Name="dtCreatedDate" ColumnName="dtCreatedDate" />
+                <ScalarProperty Name="sCreatedBy" ColumnName="sCreatedBy" />
+                <ScalarProperty Name="dtLastUpdatedDate" ColumnName="dtLastUpdatedDate" />
+                <ScalarProperty Name="sLastUpdatedBy" ColumnName="sLastUpdatedBy" />
+                <ScalarProperty Name="iServiceDeskSnapshot_id" ColumnName="iServiceDeskSnapshot_id" />
+                <ScalarProperty Name="dtInvoiceBillPeriodStart" ColumnName="dtInvoiceBillPeriodStart" />
+                <ScalarProperty Name="dtInvoiceBillPeriodEnd" ColumnName="dtInvoiceBillPeriodEnd" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_InvoiceFileTypes_ByInvoiceId" FunctionName="AutomateModel.Store.get_InvoiceFileTypes_ByInvoiceId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_InvoiceFileTypes_ByInvoiceId_Result">
+                <ScalarProperty Name="iAssociatedFileId" ColumnName="iAssociatedFileId" />
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="iFileTypeId" ColumnName="iFileTypeId" />
+                <ScalarProperty Name="sFileType" ColumnName="sFileType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_InvoiceFileUploads_ByInvoiceId" FunctionName="AutomateModel.Store.Get_InvoiceFileUploads_ByInvoiceId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.Get_InvoiceFileUploads_ByInvoiceId_Result">
+                <ScalarProperty Name="iUploadedFileId" ColumnName="iUploadedFileId" />
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="iFileTypeId" ColumnName="iFileTypeId" />
+                <ScalarProperty Name="sFilePath" ColumnName="sFilePath" />
+                <ScalarProperty Name="iSnapshotId" ColumnName="iSnapshotId" />
+                <ScalarProperty Name="sUploadedStatus" ColumnName="sUploadedStatus" />
+                <ScalarProperty Name="dtUploadedDate" ColumnName="dtUploadedDate" />
+                <ScalarProperty Name="sUploadedBy" ColumnName="sUploadedBy" />
+                <ScalarProperty Name="sFileType" ColumnName="sFileType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_InvoiceNumbersByTypeId" FunctionName="AutomateModel.Store.get_InvoiceNumbersByTypeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_InvoiceNumbersByTypeId_Result">
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="sInvoiceNumber" ColumnName="sInvoiceNumber" />
+                <ScalarProperty Name="iBillingMonth" ColumnName="iBillingMonth" />
+                <ScalarProperty Name="iBillingYear" ColumnName="iBillingYear" />
+                <ScalarProperty Name="iDefaultImportCurrencyID" ColumnName="iDefaultImportCurrencyID" />
+                <ScalarProperty Name="sStatus" ColumnName="sStatus" />
+                <ScalarProperty Name="sLastAction" ColumnName="sLastAction" />
+                <ScalarProperty Name="sRecordType1_Status" ColumnName="sRecordType1_Status" />
+                <ScalarProperty Name="dtRecordType1_DateTime" ColumnName="dtRecordType1_DateTime" />
+                <ScalarProperty Name="sRecordType2_Status" ColumnName="sRecordType2_Status" />
+                <ScalarProperty Name="dtRecordType2_DateTime" ColumnName="dtRecordType2_DateTime" />
+                <ScalarProperty Name="sRecordType3_Status" ColumnName="sRecordType3_Status" />
+                <ScalarProperty Name="dtRecordType3_DateTime" ColumnName="dtRecordType3_DateTime" />
+                <ScalarProperty Name="sRecordType4_Status" ColumnName="sRecordType4_Status" />
+                <ScalarProperty Name="dtRecordType4_DateTime" ColumnName="dtRecordType4_DateTime" />
+                <ScalarProperty Name="sRecordType5_Status" ColumnName="sRecordType5_Status" />
+                <ScalarProperty Name="dtRecordType5_DateTime" ColumnName="dtRecordType5_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Status" ColumnName="sBillingFileExport_Status" />
+                <ScalarProperty Name="dtBillingFileExport_DateTime" ColumnName="dtBillingFileExport_DateTime" />
+                <ScalarProperty Name="sBillingFileExport_Path" ColumnName="sBillingFileExport_Path" />
+                <ScalarProperty Name="sExportCurrencyID" ColumnName="sExportCurrencyID" />
+                <ScalarProperty Name="dtCreatedDate" ColumnName="dtCreatedDate" />
+                <ScalarProperty Name="sCreatedBy" ColumnName="sCreatedBy" />
+                <ScalarProperty Name="dtLastUpdatedDate" ColumnName="dtLastUpdatedDate" />
+                <ScalarProperty Name="sLastUpdatedBy" ColumnName="sLastUpdatedBy" />
+                <ScalarProperty Name="iServiceDeskSnapshot_id" ColumnName="iServiceDeskSnapshot_id" />
+                <ScalarProperty Name="dtInvoiceBillPeriodStart" ColumnName="dtInvoiceBillPeriodStart" />
+                <ScalarProperty Name="dtInvoiceBillPeriodEnd" ColumnName="dtInvoiceBillPeriodEnd" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="get_InvoiceType" FunctionName="AutomateModel.Store.get_InvoiceType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.get_InvoiceType_Result">
+                <ScalarProperty Name="iInvoiceTypeId" ColumnName="iInvoiceTypeId" />
+                <ScalarProperty Name="sInvoiceTypeName" ColumnName="sInvoiceTypeName" />
+                <ScalarProperty Name="sPrefix" ColumnName="sPrefix" />
+                <ScalarProperty Name="sBAN" ColumnName="sBAN" />
+                <ScalarProperty Name="sVendorName" ColumnName="sVendorName" />
+                <ScalarProperty Name="sImportCurrencyDefault" ColumnName="sImportCurrencyDefault" />
+                <ScalarProperty Name="sExportCurrencyDefault" ColumnName="sExportCurrencyDefault" />
+                <ScalarProperty Name="sDefaultFTP" ColumnName="sDefaultFTP" />
+                <ScalarProperty Name="sFTPUsername" ColumnName="sFTPUsername" />
+                <ScalarProperty Name="sFTPPassword" ColumnName="sFTPPassword" />
+                <ScalarProperty Name="bIsAutoPreBill" ColumnName="bIsAutoPreBill" />
+                <ScalarProperty Name="iDaysBeforeBillCycle" ColumnName="iDaysBeforeBillCycle" />
+                <ScalarProperty Name="bIsAutoPostBill" ColumnName="bIsAutoPostBill" />
+                <ScalarProperty Name="iDaysAfterBillCycle" ColumnName="iDaysAfterBillCycle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_MBM_ComparisonResult" FunctionName="AutomateModel.Store.Get_MBM_ComparisonResult">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.Get_MBM_ComparisonResult_Result">
+                <ScalarProperty Name="iSnapshotId" ColumnName="iSnapshotId" />
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="sCRMAccountNumber" ColumnName="sCRMAccountNumber" />
+                <ScalarProperty Name="sAssetSearchCode1" ColumnName="sAssetSearchCode1" />
+                <ScalarProperty Name="sAssetSearchCode2" ColumnName="sAssetSearchCode2" />
+                <ScalarProperty Name="mCharge" ColumnName="mCharge" />
+                <ScalarProperty Name="iActionType" ColumnName="iActionType" />
+                <ScalarProperty Name="sProfileName" ColumnName="sProfileName" />
+                <ScalarProperty Name="iGLCode" ColumnName="iGLCode" />
+                <ScalarProperty Name="sFeatureCode" ColumnName="sFeatureCode" />
+                <ScalarProperty Name="dtMainStart" ColumnName="dtMainStart" />
+                <ScalarProperty Name="dtMainEnd" ColumnName="dtMainEnd" />
+                <ScalarProperty Name="sItemType" ColumnName="sItemType" />
+                <ScalarProperty Name="sSubType" ColumnName="sSubType" />
+                <ScalarProperty Name="sSwitchId" ColumnName="sSwitchId" />
+                <ScalarProperty Name="sItemId" ColumnName="sItemId" />
+                <ScalarProperty Name="sSequenceId" ColumnName="sSequenceId" />
+                <ScalarProperty Name="iLoadId" ColumnName="iLoadId" />
+                <ScalarProperty Name="iProcessed" ColumnName="iProcessed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_MBM_ComparisonResultCSG" FunctionName="AutomateModel.Store.Get_MBM_ComparisonResultCSG">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.Get_MBM_ComparisonResultCSG">
+                <ScalarProperty Name="iSnapshotId" ColumnName="iSnapshotId" />
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="sCSGAccountNumber" ColumnName="sCSGAccountNumber" />
+                <ScalarProperty Name="sAssetSearchCode1" ColumnName="sAssetSearchCode1" />
+                <ScalarProperty Name="sAssetSearchCode2" ColumnName="sAssetSearchCode2" />
+                <ScalarProperty Name="mCharge" ColumnName="mCharge" />
+                <ScalarProperty Name="iActionType" ColumnName="iActionType" />
+                <ScalarProperty Name="sProfileName" ColumnName="sProfileName" />
+                <ScalarProperty Name="sOfferExternalRef" ColumnName="sOfferExternalRef" />
+                <ScalarProperty Name="sProductExternalRef" ColumnName="sProductExternalRef" />
+                <ScalarProperty Name="sPricingPlanExternalRef" ColumnName="sPricingPlanExternalRef" />
+                <ScalarProperty Name="sMBMUniqueID" ColumnName="sMBMUniqueID" />
+                <ScalarProperty Name="dtMainStart" ColumnName="dtMainStart" />
+                <ScalarProperty Name="dtMainEnd" ColumnName="dtMainEnd" />
+                <!--<ScalarProperty Name="sItemType" ColumnName="sItemType" />-->
+                <!--<ScalarProperty Name="sSubType" ColumnName="sSubType" />-->
+                <!--<ScalarProperty Name="sSwitchId" ColumnName="sSwitchId" />
+                <ScalarProperty Name="sItemId" ColumnName="sItemId" />-->
+                <!--<ScalarProperty Name="sSequenceId" ColumnName="sSequenceId" />-->
+                <ScalarProperty Name="iLoadId" ColumnName="iLoadId" />
+                <ScalarProperty Name="iProcessed" ColumnName="iProcessed" />
+                <ScalarProperty Name="sSubscriberId" ColumnName="sSubscriberId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_UnprocessedMBMComparisonResult" FunctionName="AutomateModel.Store.Get_UnprocessedMBMComparisonResult">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.Get_UnprocessedMBMComparisonResult_Result">
+                <ScalarProperty Name="iSnapshotId" ColumnName="iSnapshotId" />
+                <ScalarProperty Name="iInvoiceId" ColumnName="iInvoiceId" />
+                <ScalarProperty Name="sCRMAccountNumber" ColumnName="sCRMAccountNumber" />
+                <ScalarProperty Name="sAssetSearchCode1" ColumnName="sAssetSearchCode1" />
+                <ScalarProperty Name="sAssetSearchCode2" ColumnName="sAssetSearchCode2" />
+                <ScalarProperty Name="mCharge" ColumnName="mCharge" />
+                <ScalarProperty Name="iActionType" ColumnName="iActionType" />
+                <ScalarProperty Name="sProfileName" ColumnName="sProfileName" />
+                <ScalarProperty Name="iGLCode" ColumnName="iGLCode" />
+                <ScalarProperty Name="sFeatureCode" ColumnName="sFeatureCode" />
+                <ScalarProperty Name="dtMainStart" ColumnName="dtMainStart" />
+                <ScalarProperty Name="dtMainEnd" ColumnName="dtMainEnd" />
+                <ScalarProperty Name="sItemType" ColumnName="sItemType" />
+                <ScalarProperty Name="sSubType" ColumnName="sSubType" />
+                <ScalarProperty Name="sSwitchId" ColumnName="sSwitchId" />
+                <ScalarProperty Name="sItemId" ColumnName="sItemId" />
+                <ScalarProperty Name="sSequenceId" ColumnName="sSequenceId" />
+                <ScalarProperty Name="iLoadId" ColumnName="iLoadId" />
+                <ScalarProperty Name="iProcessed" ColumnName="iProcessed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insert_Invoice" FunctionName="AutomateModel.Store.insert_Invoice" />
+          <FunctionImportMapping FunctionImportName="insert_InvoiceInMBMAutomate" FunctionName="AutomateModel.Store.insert_InvoiceInMBMAutomate" />
+          <FunctionImportMapping FunctionImportName="Insert_MBM_ComparisonResult" FunctionName="AutomateModel.Store.Insert_MBM_ComparisonResult" />
+          <FunctionImportMapping FunctionImportName="insert_MBMdata_ByInvoiceIdInvoiceType" FunctionName="AutomateModel.Store.insert_MBMdata_ByInvoiceIdInvoiceType" />
+          <FunctionImportMapping FunctionImportName="mbm_FetchCRMDataFromUI" FunctionName="AutomateModel.Store.mbm_FetchCRMDataFromUI" />
+          <FunctionImportMapping FunctionImportName="Update_InvoiceRecordTypes" FunctionName="AutomateModel.Store.Update_InvoiceRecordTypes" />
+          <FunctionImportMapping FunctionImportName="update_ProcessWorkFlowStatus" FunctionName="AutomateModel.Store.update_ProcessWorkFlowStatus" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType1_Process" FunctionName="AutomateModel.Store.mbm_RecordType1_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType1_ValidateInvoice" FunctionName="AutomateModel.Store.mbm_RecordType1_ValidateInvoice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.mbm_RecordType1_ValidateInvoice_Result">
+                <ScalarProperty Name="BAN" ColumnName="BAN" />
+                <ScalarProperty Name="RecordType1_Sum" ColumnName="RecordType1_Sum" />
+                <ScalarProperty Name="RecordType3_Sum" ColumnName="RecordType3_Sum" />
+                <ScalarProperty Name="RecordType5_Sum" ColumnName="RecordType5_Sum" />
+                <ScalarProperty Name="Validated" ColumnName="Validated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="mbm_RecordType2_Process" FunctionName="AutomateModel.Store.mbm_RecordType2_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType2_ValidateInvoice" FunctionName="AutomateModel.Store.mbm_RecordType2_ValidateInvoice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.mbm_RecordType2_ValidateInvoice_Result">
+                <ScalarProperty Name="BAN" ColumnName="BAN" />
+                <ScalarProperty Name="RecordType2_Sum" ColumnName="RecordType2_Sum" />
+                <ScalarProperty Name="RecordType3_Sum" ColumnName="RecordType3_Sum" />
+                <ScalarProperty Name="RecordType5_Sum" ColumnName="RecordType5_Sum" />
+                <ScalarProperty Name="Validated" ColumnName="Validated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insert_InvoiceByMBMAutomate" FunctionName="AutomateModel.Store.insert_InvoiceByMBMAutomate" />
+          <FunctionImportMapping FunctionImportName="PostBillingInMBMAutomate" FunctionName="AutomateModel.Store.PostBillingInMBMAutomate" />
+          <FunctionImportMapping FunctionImportName="insert_InvoiceByMBMAutomate_all" FunctionName="AutomateModel.Store.insert_InvoiceByMBMAutomate_all" />
+          <FunctionImportMapping FunctionImportName="insert_InvoiceByMBMAutomate_Process" FunctionName="AutomateModel.Store.insert_InvoiceByMBMAutomate_Process" />
+          <EntitySetMapping Name="ApplicationLogs">
+            <EntityTypeMapping TypeName="AutomateModel.ApplicationLog">
+              <MappingFragment StoreEntitySet="ApplicationLog">
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CodeLocation" ColumnName="CodeLocation" />
+                <ScalarProperty Name="ExceptionDateTime" ColumnName="ExceptionDateTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExceptionLogs">
+            <EntityTypeMapping TypeName="AutomateModel.ExceptionLog">
+              <MappingFragment StoreEntitySet="ExceptionLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessLogs">
+            <EntityTypeMapping TypeName="AutomateModel.ProcessLog">
+              <MappingFragment StoreEntitySet="ProcessLog">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ProcessDateTime" ColumnName="ProcessDateTime" />
+                <ScalarProperty Name="ProcessResult" ColumnName="ProcessResult" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ApplicationLog_Get" FunctionName="AutomateModel.Store.ApplicationLog_Get" />
+          <FunctionImportMapping FunctionImportName="ApplicationLog_InsertItem" FunctionName="AutomateModel.Store.ApplicationLog_InsertItem" />
+          <FunctionImportMapping FunctionImportName="ExceptionLog_Get" FunctionName="AutomateModel.Store.ExceptionLog_Get" />
+          <FunctionImportMapping FunctionImportName="ExceptionLog_InsertItem" FunctionName="AutomateModel.Store.ExceptionLog_InsertItem" />
+          <FunctionImportMapping FunctionImportName="ProcessLog_Get" FunctionName="AutomateModel.Store.ProcessLog_Get">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.ProcessLog_Get_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="ProcessName" ColumnName="ProcessName" />
+                <ScalarProperty Name="ProcessResult" ColumnName="ProcessResult" />
+                <ScalarProperty Name="ProcessDateTime" ColumnName="ProcessDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcessLog_InsertItem" FunctionName="AutomateModel.Store.ProcessLog_InsertItem" />
+          <FunctionImportMapping FunctionImportName="PostBillingInMBMAutomate_GetInvoiceRecords" FunctionName="AutomateModel.Store.PostBillingInMBMAutomate_GetInvoiceRecords">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AutomateModel.PostBillingInMBMAutomate_GetInvoiceRecords_Result">
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="update_MBMAutomateStatus" FunctionName="AutomateModel.Store.update_MBMAutomateStatus" />
+          <FunctionImportMapping FunctionImportName="usp_mbm_CBADCRMData" FunctionName="AutomateModel.Store.usp_mbm_CBADCRMData" />
+          <FunctionImportMapping FunctionImportName="usp_mbm_CBADTaxData" FunctionName="AutomateModel.Store.usp_mbm_CBADTaxData" />
+          <FunctionImportMapping FunctionImportName="usp_mbm_GetMultiLocationSummaryData" FunctionName="AutomateModel.Store.usp_mbm_GetMultiLocationSummaryData" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType3_Process" FunctionName="AutomateModel.Store.mbm_RecordType3_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType4_Process" FunctionName="AutomateModel.Store.mbm_RecordType4_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RecordType5_Process" FunctionName="AutomateModel.Store.mbm_RecordType5_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RT1Summary_Process" FunctionName="AutomateModel.Store.mbm_RT1Summary_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RT2Summary_Process" FunctionName="AutomateModel.Store.mbm_RT2Summary_Process" />
+          <FunctionImportMapping FunctionImportName="mbm_RT4Summary_Process" FunctionName="AutomateModel.Store.mbm_RT4Summary_Process" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21923497-3BF8-43B8-AA9F-0CA3A6411C8A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CBTS.Gcom.GCOMBillingEngine</RootNamespace>
+    <AssemblyName>GCOMBillingEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BillingEngine.cs" />
+    <Compile Include="Configurations.cs" />
+    <Compile Include="Conversions.cs" />
+    <Compile Include="FileExport.cs" />
+    <Compile Include="FileImport.cs" />
+    <Compile Include="FileImport_CBADLongDistance.cs" />
+    <Compile Include="FileImport_CBADTaxFile.cs" />
+    <Compile Include="FileImport_EC500.cs" />
+    <Compile Include="FileImport_MLS.cs" />
+    <Compile Include="FileImport_OneTimeCharges.cs" />
+    <Compile Include="FileImport_OSNFlatRate.cs" />
+    <Compile Include="FileImport_OSNLongDistance.cs" />
+    <Compile Include="FileImport_OSNUsageSummary.cs" />
+    <Compile Include="InvoiceBL.cs" />
+    <Compile Include="Logs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordTypes.cs" />
+    <Compile Include="Service References\CBTSServiceProd\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CBTSService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{AF9FAFAB-F061-4871-AED9-623E69051091}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{526C5A13-BFA5-4606-B7AD-7BDADB31DE7A}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{7F64F739-28D6-48FA-83DD-F7D55AAEAB79}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSServiceProd\CBTSService.wsdl" />
+    <None Include="Service References\CBTSServiceProd\CBTSService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CBTSServiceProd\CBTSService1.wsdl" />
+    <None Include="Service References\CBTSServiceProd\CBTSService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CBTSService\CBTSService.wsdl" />
+    <None Include="Service References\CBTSService\CBTSService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CBTSService\CBTSService1.wsdl" />
+    <None Include="Service References\CBTSService\CBTSService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CBTSServiceProd\" />
+    <WCFMetadataStorage Include="Service References\CBTSService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSService\CBTSService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSServiceProd\CBTSService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSServiceProd\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSServiceProd\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CBTSServiceProd\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

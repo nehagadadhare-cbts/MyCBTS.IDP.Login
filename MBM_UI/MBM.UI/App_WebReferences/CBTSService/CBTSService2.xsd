@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.DataContracts.CBTSService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.DataContracts.CBTSService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfCSGServiceIdentifiers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CSGServiceIdentifiers" nillable="true" type="tns:CSGServiceIdentifiers" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCSGServiceIdentifiers" nillable="true" type="tns:ArrayOfCSGServiceIdentifiers" />
+  <xs:complexType name="CSGServiceIdentifiers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ServiceIdentifier" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSGServiceIdentifiers" nillable="true" type="tns:CSGServiceIdentifiers" />
+  <xs:complexType name="ArrayOfCSGServiceFeatures">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CSGServiceFeatures" nillable="true" type="tns:CSGServiceFeatures" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCSGServiceFeatures" nillable="true" type="tns:ArrayOfCSGServiceFeatures" />
+  <xs:complexType name="CSGServiceFeatures">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PricingPlanIdentifierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PricingPlanIdentifierValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductIdentifierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductIdentifierValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSGServiceFeatures" nillable="true" type="tns:CSGServiceFeatures" />
+  <xs:complexType name="ArrayOfCSGServiceAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CSGServiceAttributes" nillable="true" type="tns:CSGServiceAttributes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCSGServiceAttributes" nillable="true" type="tns:ArrayOfCSGServiceAttributes" />
+  <xs:complexType name="CSGServiceAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSGServiceAttributes" nillable="true" type="tns:CSGServiceAttributes" />
+</xs:schema>

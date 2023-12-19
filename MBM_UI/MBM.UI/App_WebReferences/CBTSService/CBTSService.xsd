@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ExtendedTerritory.Service.Model/2011/CBTSService" elementFormDefault="qualified" targetNamespace="http://ExtendedTerritory.Service.Model/2011/CBTSService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd0" namespace="http://Qore.cinbell.com/CBTSService/v1" />
+  <xs:element name="OrderSearchRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FilterOption" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchCriteria" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrderSearch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfOrderSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderSearch" nillable="true" type="tns:OrderSearch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderSearch" nillable="true" type="tns:ArrayOfOrderSearch" />
+  <xs:complexType name="OrderSearch">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:int" />
+      <xs:element name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element name="OrderDate" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://Qore.cinbell.com/CBTSService/v1" name="Status" type="q1:OrderStatus" />
+      <xs:element name="ContractNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderSearch" nillable="true" type="tns:OrderSearch" />
+</xs:schema>

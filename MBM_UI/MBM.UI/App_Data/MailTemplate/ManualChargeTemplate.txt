@@ -1,0 +1,9 @@
+﻿<p>Hello #USER#,</p>
+<br/>
+<p>Your uploaded file has processed successfully. Please find the status below.</p>
+
+<p><b>File Name</b>: #FileName#</p> 
+
+<p><b>Successful</b>: #Success#</p>
+
+<p><b>Failure</b>: #Failure#</p>

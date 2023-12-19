@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MBMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mbm_ProcessWorkFlowStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sInvoiceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sCompareToCRM" Type="bit" Nullable="false" />
+          <Property Name="sViewChange" Type="bit" Nullable="false" />
+          <Property Name="sApproveChange" Type="bit" Nullable="false" />
+          <Property Name="sSyncCRM" Type="bit" Nullable="false" />
+          <Property Name="sImportCRMData" Type="bit" Nullable="false" />
+          <Property Name="sProcessInvoice" Type="bit" Nullable="false" />
+          <Property Name="sExportInvoiceFile" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MBMAutomateStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceTypeId" Type="int" Nullable="false" />
+          <Property Name="ImportCurrencyId" Type="int" Nullable="false" />
+          <Property Name="ExportCurrenyId" Type="int" Nullable="false" />
+          <Property Name="BillingMonth" Type="int" Nullable="false" />
+          <Property Name="BillingYear" Type="int" Nullable="false" />
+          <Property Name="InsertedBy" Type="varchar" MaxLength="50" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsInvoiceCreated" Type="bit" Nullable="false" />
+          <Property Name="IsFileTypeUploaded" Type="bit" Nullable="false" />
+          <Property Name="IsComparedToCRM" Type="bit" Nullable="false" />
+          <Property Name="IsViwedChanged" Type="bit" Nullable="false" />
+          <Property Name="IsApprovedChange" Type="bit" Nullable="false" />
+          <Property Name="IsApprovalMailSent" Type="bit" Nullable="false" />
+          <Property Name="IsNewInvoice" Type="bit" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="IsManualFileUpload" Type="bit" Nullable="false" />
+          <Property Name="IsProcessed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TokenHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="ApprovedDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="MBMModelStoreContainer">
+          <EntitySet Name="mbm_ProcessWorkFlowStatus" EntityType="Self.mbm_ProcessWorkFlowStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MBMAutomateStatus" EntityType="Self.MBMAutomateStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TokenHistory" EntityType="Self.TokenHistory" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MBMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mbm_ProcessWorkFlowStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sInvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sCompareToCRM" Type="Boolean" Nullable="false" />
+          <Property Name="sViewChange" Type="Boolean" Nullable="false" />
+          <Property Name="sApproveChange" Type="Boolean" Nullable="false" />
+          <Property Name="sSyncCRM" Type="Boolean" Nullable="false" />
+          <Property Name="sImportCRMData" Type="Boolean" Nullable="false" />
+          <Property Name="sProcessInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="sExportInvoiceFile" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MBMDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mbm_ProcessWorkFlowStatus" EntityType="Self.mbm_ProcessWorkFlowStatus" />
+          <EntitySet Name="TokenHistories" EntityType="MBMModel.TokenHistory" />
+          <EntitySet Name="MBMAutomateStatus" EntityType="MBMModel.MBMAutomateStatu" />
+        </EntityContainer>
+        <EntityType Name="TokenHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="InsertedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MBMAutomateStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ImportCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="ExportCurrenyId" Type="Int32" Nullable="false" />
+          <Property Name="BillingMonth" Type="Int32" Nullable="false" />
+          <Property Name="BillingYear" Type="Int32" Nullable="false" />
+          <Property Name="InsertedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsInvoiceCreated" Type="Boolean" Nullable="false" />
+          <Property Name="IsFileTypeUploaded" Type="Boolean" Nullable="false" />
+          <Property Name="IsComparedToCRM" Type="Boolean" Nullable="false" />
+          <Property Name="IsViwedChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsApprovedChange" Type="Boolean" Nullable="false" />
+          <Property Name="IsApprovalMailSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsNewInvoice" Type="Boolean" Nullable="false" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="IsManualFileUpload" Type="Boolean" Nullable="false" />
+          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MBMModelStoreContainer" CdmEntityContainer="MBMDb">
+          <EntitySetMapping Name="mbm_ProcessWorkFlowStatus">
+            <EntityTypeMapping TypeName="MBMModel.mbm_ProcessWorkFlowStatus">
+              <MappingFragment StoreEntitySet="mbm_ProcessWorkFlowStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sInvoiceNumber" ColumnName="sInvoiceNumber" />
+                <ScalarProperty Name="sCompareToCRM" ColumnName="sCompareToCRM" />
+                <ScalarProperty Name="sViewChange" ColumnName="sViewChange" />
+                <ScalarProperty Name="sApproveChange" ColumnName="sApproveChange" />
+                <ScalarProperty Name="sSyncCRM" ColumnName="sSyncCRM" />
+                <ScalarProperty Name="sImportCRMData" ColumnName="sImportCRMData" />
+                <ScalarProperty Name="sProcessInvoice" ColumnName="sProcessInvoice" />
+                <ScalarProperty Name="sExportInvoiceFile" ColumnName="sExportInvoiceFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TokenHistories">
+            <EntityTypeMapping TypeName="MBMModel.TokenHistory">
+              <MappingFragment StoreEntitySet="TokenHistory">
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MBMAutomateStatus">
+            <EntityTypeMapping TypeName="MBMModel.MBMAutomateStatu">
+              <MappingFragment StoreEntitySet="MBMAutomateStatus">
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="IsManualFileUpload" ColumnName="IsManualFileUpload" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="IsNewInvoice" ColumnName="IsNewInvoice" />
+                <ScalarProperty Name="IsApprovalMailSent" ColumnName="IsApprovalMailSent" />
+                <ScalarProperty Name="IsApprovedChange" ColumnName="IsApprovedChange" />
+                <ScalarProperty Name="IsViwedChanged" ColumnName="IsViwedChanged" />
+                <ScalarProperty Name="IsComparedToCRM" ColumnName="IsComparedToCRM" />
+                <ScalarProperty Name="IsFileTypeUploaded" ColumnName="IsFileTypeUploaded" />
+                <ScalarProperty Name="IsInvoiceCreated" ColumnName="IsInvoiceCreated" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="BillingYear" ColumnName="BillingYear" />
+                <ScalarProperty Name="BillingMonth" ColumnName="BillingMonth" />
+                <ScalarProperty Name="ExportCurrenyId" ColumnName="ExportCurrenyId" />
+                <ScalarProperty Name="ImportCurrencyId" ColumnName="ImportCurrencyId" />
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

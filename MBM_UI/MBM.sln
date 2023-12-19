@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.Entities", "MBM.Entities\MBM.Entities.csproj", "{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.DataAccess", "MBM.DataAccess\MBM.DataAccess.csproj", "{708A14EC-9C86-4EBD-9183-37BAAAD85851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.BillingEngine", "MBM.BillingEngine\MBM.BillingEngine.csproj", "{F82FAC95-5E25-4DAE-BA94-209E0152F669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.Library", "MBM.Library\MBM.Library.csproj", "{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.Service", "MBM.Service\MBM.Service.csproj", "{3ED6AFF1-69C1-421E-90E3-624A9A35C7F7}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MBM.UI", "http://localhost:49748", "{3DEDB6DC-9D47-413E-8266-6A20EE4328E2}"
+	ProjectSection(WebsiteProperties) = preProject
+		Frontpage = "false"
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{708A14EC-9C86-4EBD-9183-37BAAAD85851}|MBM.DataAccess.dll;{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}|MBM.Entities.dll;{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}|MBM.Library.dll;{f82fac95-5e25-4dae-ba94-209e0152f669}|MBM.BillingEngine.dll;{97c35ebc-8d21-429f-9f22-ab7a118d8d65}|MBM.Authenticate.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49748"
+		Debug.AspNetCompiler.PhysicalPath = "MBM.UI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49748\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49748"
+		Release.AspNetCompiler.PhysicalPath = "MBM.UI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49748\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "MBM.UI\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBM.Authenticate", "MBM.Authenticate\MBM.Authenticate.csproj", "{97C35EBC-8D21-429F-9F22-AB7A118D8D65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automate.DataAccess", "Automate.DataAccess\Automate.DataAccess.csproj", "{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIAutomateMBM", "APIAutomateMBM\APIAutomateMBM.csproj", "{4CB51094-E323-46C3-B597-FF300D450363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomateMBM", "AutomateMBM\AutomateMBM.csproj", "{58131D1E-639F-45AC-90D4-8586E12AF18C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBMUnitTest", "MBMUnitTest\MBMUnitTest.csproj", "{E7DBFD07-EFDB-4C07-9806-52FD81C1F924}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E367A5BC-D86D-4CF8-84EB-1E2D59B16439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708A14EC-9C86-4EBD-9183-37BAAAD85851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708A14EC-9C86-4EBD-9183-37BAAAD85851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708A14EC-9C86-4EBD-9183-37BAAAD85851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708A14EC-9C86-4EBD-9183-37BAAAD85851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82FAC95-5E25-4DAE-BA94-209E0152F669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82FAC95-5E25-4DAE-BA94-209E0152F669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82FAC95-5E25-4DAE-BA94-209E0152F669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82FAC95-5E25-4DAE-BA94-209E0152F669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA2026E6-FE6A-4F77-9DCE-A278F7EA96B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED6AFF1-69C1-421E-90E3-624A9A35C7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED6AFF1-69C1-421E-90E3-624A9A35C7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED6AFF1-69C1-421E-90E3-624A9A35C7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED6AFF1-69C1-421E-90E3-624A9A35C7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DEDB6DC-9D47-413E-8266-6A20EE4328E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DEDB6DC-9D47-413E-8266-6A20EE4328E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DEDB6DC-9D47-413E-8266-6A20EE4328E2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DEDB6DC-9D47-413E-8266-6A20EE4328E2}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{97C35EBC-8D21-429F-9F22-AB7A118D8D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C35EBC-8D21-429F-9F22-AB7A118D8D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C35EBC-8D21-429F-9F22-AB7A118D8D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C35EBC-8D21-429F-9F22-AB7A118D8D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F671F4D-5188-4BEC-ACA0-6FFA5247D5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CB51094-E323-46C3-B597-FF300D450363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB51094-E323-46C3-B597-FF300D450363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB51094-E323-46C3-B597-FF300D450363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB51094-E323-46C3-B597-FF300D450363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58131D1E-639F-45AC-90D4-8586E12AF18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58131D1E-639F-45AC-90D4-8586E12AF18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58131D1E-639F-45AC-90D4-8586E12AF18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58131D1E-639F-45AC-90D4-8586E12AF18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7DBFD07-EFDB-4C07-9806-52FD81C1F924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7DBFD07-EFDB-4C07-9806-52FD81C1F924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7DBFD07-EFDB-4C07-9806-52FD81C1F924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7DBFD07-EFDB-4C07-9806-52FD81C1F924}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

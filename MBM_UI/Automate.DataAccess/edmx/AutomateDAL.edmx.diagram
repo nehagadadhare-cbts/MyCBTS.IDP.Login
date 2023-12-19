@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="43d424a5952e4320b9082f556c03fc08" Name="Diagram1" ZoomLevel="44">
+        <EntityTypeShape EntityType="AutomateModel.mbm_Invoice" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomateModel.mbm_InvoiceTypes" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomateModel.mbm_ProcessWorkFlowStatus" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomateModel.MBMAutomateStatu" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomateModel.TokenHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AutomateModel.FK_mbm_Invoice_mbm_InvoiceTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomateModel.fk_MBMAutomateStatus_invType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AutomateModel.ApplicationLog" Width="1.5" PointX="0.39487677830964174" PointY="10.265835140955558" />
+        <EntityTypeShape EntityType="AutomateModel.ExceptionLog" Width="1.5" PointX="3.3552369546868084" PointY="16.374077640648036" />
+        <EntityTypeShape EntityType="AutomateModel.ProcessLog" Width="1.5" PointX="9.7395287555360834" PointY="8.6884682218956151" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

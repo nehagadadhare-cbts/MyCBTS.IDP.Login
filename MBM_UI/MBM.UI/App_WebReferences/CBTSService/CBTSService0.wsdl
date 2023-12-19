@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Qore.cinbell.com/CBTSService/v1" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CBTSService" targetNamespace="http://Qore.cinbell.com/CBTSService/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://localhost:1114/CBTSService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Qore.cinbell.com/CBTSService/v1/Imports">
+      <xsd:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd0" namespace="http://Qore.cinbell.com/CBTSService/v1" />
+      <xsd:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.MessageContracts.CBTSService" />
+      <xsd:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd3" namespace="http://ExtendedTerritory.Service.Model/2011/CBTSService" />
+      <xsd:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.DataContracts.CBTSService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GCOMAccountConfigurationRequest">
+    <wsdl:part name="parameters" element="tns:GCOMAccountConfigurationRequest" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_GCOMAccountConfiguration_OutputMessage" />
+  <wsdl:message name="CBTSService_GCOMAccountConfiguration_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="CRMAccountConfigurationRequest">
+    <wsdl:part name="parameters" element="tns:CRMAccountConfigurationRequest" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_CRMAccountConfiguration_OutputMessage" />
+  <wsdl:message name="CBTSService_CRMAccountConfiguration_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="CRMSnapshotSystemOrderStatusRequest">
+    <wsdl:part name="parameters" element="tns:CRMSnapshotSystemOrderStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="CRMSnapshotSystemOrderStatusResponse">
+    <wsdl:part name="parameters" element="tns:CRMSnapshotSystemOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_CheckSnapshotStatus_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderInfoRequest">
+    <wsdl:part name="parameters" element="tns:GetOrderinfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderInfoResponse">
+    <wsdl:part name="parameters" element="tns:GetOrderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_GetOrderInfo_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="OrderSearchRequest">
+    <wsdl:part xmlns:q1="http://ExtendedTerritory.Service.Model/2011/CBTSService" name="parameters" element="q1:OrderSearchRequest" />
+  </wsdl:message>
+  <wsdl:message name="OrderSearchResponse">
+    <wsdl:part xmlns:q2="http://ExtendedTerritory.Service.Model/2011/CBTSService" name="parameters" element="q2:OrderSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_OrderSearch_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="CBTSOrderProductStatusSnapshotRequest">
+    <wsdl:part name="parameters" element="tns:CBTSOrderProductStatusSnapshotRequest" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_ProcessCBTSOrderProductStatusSnapshot_OutputMessage" />
+  <wsdl:message name="CBTSService_ProcessCBTSOrderProductStatusSnapshot_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="MBMServiceFeatureOrderSnapshotRequest">
+    <wsdl:part name="parameters" element="tns:MBMServiceFeatureOrderSnapshotRequest" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_ProcessMBMServiceFeatureOrderSnapshot_OutputMessage" />
+  <wsdl:message name="CBTSService_ProcessMBMServiceFeatureOrderSnapshot_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="MBMRateSheetRequest">
+    <wsdl:part name="parameters" element="tns:MBMRateSheetRequest" />
+  </wsdl:message>
+  <wsdl:message name="CBTSService_ProcessMBMUpdateSubscriberRateSheet_OutputMessage" />
+  <wsdl:message name="CBTSService_ProcessMBMUpdateSubscriberRateSheet_ServiceFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="CBTSService">
+    <wsdl:operation name="GCOMAccountConfiguration">
+      <wsdl:input wsaw:Action="GCOMAccountConfiguration" name="GCOMAccountConfigurationRequest" message="tns:GCOMAccountConfigurationRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/GCOMAccountConfigurationResponse" message="tns:CBTSService_GCOMAccountConfiguration_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/GCOMAccountConfigurationServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_GCOMAccountConfiguration_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CRMAccountConfiguration">
+      <wsdl:input wsaw:Action="CRMAccountConfiguration" name="CRMAccountConfigurationRequest" message="tns:CRMAccountConfigurationRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/CRMAccountConfigurationResponse" message="tns:CBTSService_CRMAccountConfiguration_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/CRMAccountConfigurationServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_CRMAccountConfiguration_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSnapshotStatus">
+      <wsdl:input wsaw:Action="CheckSnapshotStatus" name="CRMSnapshotSystemOrderStatusRequest" message="tns:CRMSnapshotSystemOrderStatusRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/CheckSnapshotStatusResponse" name="CRMSnapshotSystemOrderStatusResponse" message="tns:CRMSnapshotSystemOrderStatusResponse" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/CheckSnapshotStatusServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_CheckSnapshotStatus_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderInfo">
+      <wsdl:input wsaw:Action="GetOrderInfo" name="GetOrderInfoRequest" message="tns:GetOrderInfoRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/GetOrderInfoResponse" name="GetOrderInfoResponse" message="tns:GetOrderInfoResponse" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/GetOrderInfoServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_GetOrderInfo_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderSearch">
+      <wsdl:input wsaw:Action="OrderSearch" name="OrderSearchRequest" message="tns:OrderSearchRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/OrderSearchResponse" name="OrderSearchResponse" message="tns:OrderSearchResponse" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/OrderSearchServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_OrderSearch_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessCBTSOrderProductStatusSnapshot">
+      <wsdl:input wsaw:Action="ProcessCBTSOrderProductStatusSnapshot" name="CBTSOrderProductStatusSnapshotRequest" message="tns:CBTSOrderProductStatusSnapshotRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessCBTSOrderProductStatusSnapshotResponse" message="tns:CBTSService_ProcessCBTSOrderProductStatusSnapshot_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessCBTSOrderProductStatusSnapshotServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_ProcessCBTSOrderProductStatusSnapshot_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessMBMServiceFeatureOrderSnapshot">
+      <wsdl:input wsaw:Action="ProcessMBMServiceFeatureOrderSnapshot" name="MBMServiceFeatureOrderSnapshotRequest" message="tns:MBMServiceFeatureOrderSnapshotRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessMBMServiceFeatureOrderSnapshotResponse" message="tns:CBTSService_ProcessMBMServiceFeatureOrderSnapshot_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessMBMServiceFeatureOrderSnapshotServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_ProcessMBMServiceFeatureOrderSnapshot_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessMBMUpdateSubscriberRateSheet">
+      <wsdl:input wsaw:Action="ProcessMBMUpdateSubscriberRateSheet" name="MBMRateSheetRequest" message="tns:MBMRateSheetRequest" />
+      <wsdl:output wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessMBMUpdateSubscriberRateSheetResponse" message="tns:CBTSService_ProcessMBMUpdateSubscriberRateSheet_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Qore.cinbell.com/CBTSService/v1/CBTSService/ProcessMBMUpdateSubscriberRateSheetServiceFaultFault" name="ServiceFaultFault" message="tns:CBTSService_ProcessMBMUpdateSubscriberRateSheet_ServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="CBTSService">
+    <wsdl:port name="BasicHttpBinding_CBTSService" binding="i0:BasicHttpBinding_CBTSService">
+      <soap:address location="http://localhost:1114/CBTSService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,7 @@
+﻿<p>Hello #USER#,</p>
+
+<p>Your file has Uploaded successfully. But failed while processing.</p>
+
+<p><b>File Name</b>: #FileName#</p>
+
+<p><b>Error Message</b>: #Errormsg# Please try to correct the data.  If problem persist please contact the help desk 513-397-1313.</p> 

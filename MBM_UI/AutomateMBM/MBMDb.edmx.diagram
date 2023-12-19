@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8fba5b459894bf58e6204b85aad94b9" Name="Diagram1" ZoomLevel="84" >
+        <EntityTypeShape EntityType="MBMDevModel.mbm_Invoice" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MBMDevModel.mbm_ProcessWorkFlowStatus" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MBMDevModel.TokenHistory" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MBMDevModel.MBMAutomateStatu" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MBMDevModel.mbm_PrePostBillingSetting" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MBMDevModel.mbm_InvoiceTypes" Width="1.5" PointX="0.75" PointY="1.625" />
+        <AssociationConnector Association="MBMDevModel.FK_mbm_Invoice_mbm_InvoiceTypes" />
+        <AssociationConnector Association="MBMDevModel.fk_MBMAutomateStatus_invType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

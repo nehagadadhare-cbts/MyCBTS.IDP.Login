@@ -1,0 +1,187 @@
+def svnRevision = ""
+pipeline 
+{
+	agent any
+
+	environment 
+	{
+		// Environment Variables
+		DATETIME = new Date().format('yyyyMMddHHmmss')
+		TARGET_ENV = 'MBMAPIAutomationStg'
+		SVN_URL = "https://sourcecontrol.cinbell.com/svn/202/BizMarket/applications/MBM/trunkLatest"		
+		SERVER = "HVSALPOR02D"
+		RELEASE_PATH = "\\\\HVSALPOR02D\\e\$\\Releases"
+		
+		DEPLOY_PATH = "\\\\HVSALPOR02D\\e\$\\WebApps\\MBMApi"
+		
+		BACKUP_PATH = "\\\\HVSALPOR02D\\e\$\\Backups"
+		
+		APPPOOL = "MBM"		
+		
+		RELEASE = "NA"
+		RELEASE_NOTES = "Manually triggered to deploy code to DashboardDev"
+		EMAIL_SUBJECT = "BUILD - Code Deployment to DashboardDev"
+		MSBUILD_PATH = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319"
+		
+		SONAR_PATH = "E:\\SonarQube\\msbuild-scanner"
+		SONAR_BUILD = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin"
+		SONAR_URL = "http://hvbuilds01d:9000"
+		SONAR_APP_KEY = "MBMAutomationExe"
+		
+		EMAIL_CONFIG = "E:\\Jenkins\\email_config\\Success_Mail.ps1"
+		JENKIN_URL = ""
+		EMAIL_TO = "pranavi.gundu@cinbell.com,Ramarajan.Ramasamy@cinbell.com"
+		EMAIL_CC = "NA"
+		
+		UT_PATH= "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
+		
+		Regression_Path="E:\\RegressionSuites\\MBM\\MBM.jar"
+	}
+
+	stages 
+	{		
+        /*stage("Get Source Code from SVN") 
+		{
+			steps 
+			{
+				// Get a fresh copy of Dashboard from provided path to Workspace/src
+				script 
+				{
+					def scmVars = checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [
+					[credentialsId: 'EBSBuils', depthOption: 'infinity', ignoreExternalsOption: true, local: 'src', remote: "$SVN_URL"]
+					], quietOperation: true, workspaceUpdater: [$class: 'CheckoutUpdater']])
+        
+					svnRevision = scmVars.SVN_REVISION
+				}
+			}
+		}*/
+		
+		stage("SonarQube")
+		{
+			steps{
+				script
+				{
+					dir('src'){
+						bat '"%SONAR_PATH%\\MSBuild.SonarQube.Runner.exe" begin /v:1.0 /n:"%SONAR_APP_KEY%" /k:"%SONAR_APP_KEY%" /d:sonar.host.url="%SONAR_URL%"'
+						bat '"%SONAR_BUILD%\\MSBuild.exe" MBM.sln /t:Rebuild'
+						bat '"%SONAR_PATH%\\MSBuild.SonarQube.Runner.exe" end'
+					}
+				}
+			}
+		}
+		
+		stage("Build") 
+		{
+			steps 
+			{
+				dir('src') 
+				{
+					script 
+					{						
+						bat '"%MSBUILD_PATH%\\msbuild.exe" MBM.sln'
+					}
+				}
+			}
+		}
+		
+		stage("UniTesting") 
+		{
+			steps 
+			{
+				dir('src') 
+				{
+					script 
+					{						
+						bat '"%UT_PATH%\\vstest.console.exe" "%WORKSPACE%\\src\\MBMUnitTest\\bin\\Debug\\MBMUnitTest.dll"'
+						//bat '"%UT_PATH%\\vstest.console.exe" "%WORKSPACE%\\src\\Dashboard.Api.Tests\\bin\\Debug\\Dashboard.Api.Tests.dll"'
+					}
+				}
+			}
+		}
+		
+		stage("RegressionTest") 
+		{
+			steps 
+			{
+				script 
+				{
+					bat "java -jar %Regression_Path%"
+					
+				}
+				
+			}
+		}
+		
+		/*stage("Create Release Package") 
+		{
+		   steps 
+		   {
+				dir('release_APIAutomateMBM') 
+				{
+					//deleteDir()				
+					script 
+					{
+						dir('bin')
+						{
+								
+						//deleteDir()
+								
+						bat 'xcopy "%WORKSPACE%\\src\\APIAutomateMBM\\bin" /e /d /y'
+																									
+						}
+						
+					    bat 'rmdir bin@tmp /Q > nul 2> nul'
+					    				
+					}																	
+				}
+					//create release folders on target location
+				bat 'mkdir %RELEASE_PATH%\\%DATETIME%\\release_APIAutomateMBM'
+
+				//copy release package to target server
+				bat 'xcopy "%WORKSPACE%\\release_APIAutomateMBM" "%RELEASE_PATH%\\%DATETIME%\\ApiAutomateMBM" /e /d /y'	
+			}
+		}
+		stage("Backup") 
+		{
+		   steps 
+		   {
+				//create backup folder on target location
+				bat 'mkdir %BACKUP_PATH%\\%DATETIME%\\ApiMBMAutomation'
+
+				//backup on target server
+				bat 'xcopy "%DEPLOY_PATH%" "%BACKUP_PATH%\\%DATETIME%\\ApiMBMAutomation" /e /d /y'
+			}
+		}
+		stage("Deploy") 
+		{
+		   steps 
+		   {
+				//deploy
+				bat 'powershell.exe -nologo -noprofile -command \"& Invoke-Command -ComputerName \'%SERVER%\' -ScriptBlock { if($(Get-WebAppPoolState -Name \'%API_APPPOOL%\').Value -eq \'Started\') { Stop-WebAppPool -Name \'%APPPOOL%\' } }\"'
+				bat 'xcopy "%RELEASE_PATH%\\%DATETIME%\\ApiAutomateMBM" "%DEPLOY_PATH%" /e /d /y'
+				bat 'powershell.exe -nologo -noprofile -command \"& Invoke-Command -ComputerName \'%SERVER%\' -ScriptBlock { Start-WebAppPool -Name \'%APPPOOL%\' }\"'
+				
+			}
+		}*/
+	}
+	
+	post 
+	{
+		success 
+		{
+			script 
+			{
+				currentBuild.result = 'SUCCESS'
+				bat 'powershell.exe -windowstyle hidden -command "%EMAIL_CONFIG%" "%SVN_URL%" "%SERVER1,SERVER2%" "%JENKIN_URL%" "%SONAR_URL%/mbm?id=%SONAR_APP_KEY%" "%EMAIL_TO%" "%EMAIL_CC%" "MBM" '
+			}
+		}
+		
+		failure 
+		{
+			script 
+			{
+				currentBuild.result = 'FAILURE'
+			}
+		}
+	}
+}

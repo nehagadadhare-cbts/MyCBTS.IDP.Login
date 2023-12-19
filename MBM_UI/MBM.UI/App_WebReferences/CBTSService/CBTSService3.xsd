@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.MessageContracts.CBTSService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.MessageContracts.CBTSService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd0" namespace="http://Qore.cinbell.com/CBTSService/v1" />
+  <xs:import schemaLocation="http://localhost:1114/CBTSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.DataContracts.CBTSService" />
+  <xs:complexType name="ArrayOfCRMAccountConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CRMAccountConfiguration" nillable="true" type="tns:CRMAccountConfiguration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCRMAccountConfiguration" nillable="true" type="tns:ArrayOfCRMAccountConfiguration" />
+  <xs:complexType name="CRMAccountConfiguration">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="ActivateBillItems" nillable="true" type="q1:ArrayOfCRMActivateBillItem" />
+      <xs:element xmlns:q2="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="ActivateTCPAUTHs" nillable="true" type="q2:ArrayOfCRMActivateTCPAUTH" />
+      <xs:element xmlns:q3="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="AddSubBillItems" nillable="true" type="q3:ArrayOfCRMAddSubBillItem" />
+      <xs:element xmlns:q4="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="DeactivateBillItems" nillable="true" type="q4:ArrayOfCRMDeactivateBillItem" />
+      <xs:element xmlns:q5="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="DeactivateTCPAUTHs" nillable="true" type="q5:ArrayOfCRMDeactivateTCPAUTH" />
+      <xs:element xmlns:q6="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="DeleteSubBillItems" nillable="true" type="q6:ArrayOfCRMDeleteSubBillItem" />
+      <xs:element xmlns:q7="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="UpdateSubBillItems" nillable="true" type="q7:ArrayOfCRMUpdateSubBillItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CRMAccountConfiguration" nillable="true" type="tns:CRMAccountConfiguration" />
+  <xs:complexType name="ArrayOfCSGAccountConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CSGAccountConfiguration" nillable="true" type="tns:CSGAccountConfiguration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCSGAccountConfiguration" nillable="true" type="tns:ArrayOfCSGAccountConfiguration" />
+  <xs:complexType name="CSGAccountConfiguration">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="AddLDPlanLineItems" nillable="true" type="q8:ArrayOfCSGAddLDPlans" />
+      <xs:element xmlns:q9="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="AddServiceFeatureLineItems" nillable="true" type="q9:ArrayOfCSGAddServiceFeature" />
+      <xs:element xmlns:q10="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="AddServiceLineItems" nillable="true" type="q10:ArrayOfCSGAddService" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ExtendedTerritory.Service.DataContracts.CBTSService" minOccurs="0" name="CSGServiceAttributes" nillable="true" type="q11:ArrayOfCSGServiceAttributes" />
+      <xs:element xmlns:q12="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="RemoveServiceFeatureLineItems" nillable="true" type="q12:ArrayOfCSGRemoveServiceFeature" />
+      <xs:element xmlns:q13="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="RemoveServiceLineItems" nillable="true" type="q13:ArrayOfCSGRemoveService" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSGAccountConfiguration" nillable="true" type="tns:CSGAccountConfiguration" />
+  <xs:complexType name="ArrayOfCSGRateSheetInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CSGRateSheetInformation" nillable="true" type="tns:CSGRateSheetInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCSGRateSheetInformation" nillable="true" type="tns:ArrayOfCSGRateSheetInformation" />
+  <xs:complexType name="CSGRateSheetInformation">
+    <xs:sequence>
+      <xs:element xmlns:q14="http://Qore.cinbell.com/CBTSService/v1" minOccurs="0" name="CSGRateSheetAttributes" nillable="true" type="q14:ArrayOfCSGRateSheetAttributes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSGRateSheetInformation" nillable="true" type="tns:CSGRateSheetInformation" />
+</xs:schema>

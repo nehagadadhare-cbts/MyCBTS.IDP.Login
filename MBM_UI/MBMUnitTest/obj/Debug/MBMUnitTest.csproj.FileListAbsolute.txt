@@ -1,0 +1,76 @@
+D:\CBT\Code\MBMTrunkLatest\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\CBT\Code\MBMTrunkLatest\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\CBT\Code\MBMTrunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\CBT\Code\MBMTrunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\CBT\Code\MBMTrunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\CBT\Code\2021\Jan_M\MBM\MBMTrunk\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\CBT\Code\2021\Jan_M\MBM\MBMTrunk\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\CBT\Code\2021\Jan_M\MBM\MBMTrunk\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\CBT\Code\2021\Jan_M\MBM\MBMTrunk\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\CBT\Code\2021\Jan_M\MBM\MBMTrunk\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\CBT\Code\2021\Jan_M\MBM\MBM_8967\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\CBT\Code\2021\Jan_M\MBM\MBM_8967\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\CBT\Code\2021\Jan_M\MBM\MBM_8967\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\CBT\Code\2021\Jan_M\MBM\MBM_8967\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\CBT\Code\2021\Jan_M\MBM\MBM_8967\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\CSG SEROs\trunkLatest\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\CSG SEROs\trunkLatest\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\CSG SEROs\trunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\CSG SEROs\trunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\CSG SEROs\trunkLatest\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\SERO-2646\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\SERO-2646\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\SERO-2646\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\SERO-2646\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\SERO-2646\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\SERO-2768\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\SERO-2768\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\SERO-2768\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\SERO-2768\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\SERO-2768\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\STG\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\STG\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\STG\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\STG\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\STG\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\MBM\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\MBM\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\MBM\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\MBM\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\MBM\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\MBM-3139\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\MBM-3139\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\MBM-3139\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\MBM-3139\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\MBM SERO'S\SERO-7347\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\MBM SERO'S\SERO-7347\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\MBM SERO'S\SERO-7347\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\MBM SERO'S\SERO-7347\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\MBM SERO'S\SERO-7347\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\Sero-7347\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\Sero-7347\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\Sero-7347\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\Sero-7347\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\Sero-7347\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\MBM TRUNK\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\MBM TRUNK\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\MBM TRUNK\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\MBM TRUNK\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBMUnitTest.dll.config
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBMUnitTest.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBMUnitTest.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.BillingEngine.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.DataAccess.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.Entities.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\DocumentFormat.OpenXml.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.Library.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\LumenWorks.Framework.IO.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\Renci.SshNet.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.BillingEngine.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.DataAccess.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.Entities.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\MBM.Library.pdb
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\bin\Debug\Renci.SshNet.xml
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\obj\Debug\MBMUnitTest.csprojResolveAssemblyReference.cache
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\obj\Debug\MBMUnitTest.dll
+D:\MBM\MBM_TrunkL_06nov2023\MBMUnitTest\obj\Debug\MBMUnitTest.pdb
